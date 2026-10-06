@@ -1,0 +1,135 @@
+plugins/pstack/skills/why/references/synthesizer-prompt.md
+  s_794c6adcc8b40b::t_7f3493c366e3ac 41-45,65
+CONTRIBUTING.md
+  s_794c6adcc8b40b::t_ab86f5c0ea73ad 11,14
+tools/substitutions.json
+  s_794c6adcc8b40b::t_7f3493c366e3ac 3,9-50,52-54
+  s_794c6adcc8b40b::t_6106430422d200 51
+  s_794c6adcc8b40b::t_efe6e825c3f5a9 4-8,57,62
+tests/log.test.mjs
+  s_794c6adcc8b40b::t_a5acd18758e10f 10,14-16,20
+plugins/pstack/skills/poteto-mode/scripts/worktree-audit.mjs
+  s_794c6adcc8b40b::t_8dca4a0d73c2b4 92-96
+CHANGES.md
+  s_794c6adcc8b40b::t_ab86f5c0ea73ad 5-8
+plugins/pstack/skills/poteto-mode/scripts/watch-pr/github.ts
+  s_794c6adcc8b40b::t_4e1ada29e1ff46 62
+  s_794c6adcc8b40b::t_7f3493c366e3ac 4-5,32,47-48,63,245,409,455,462,471,479,487,496,498,516,543,548,553-554,569,574-576,581,610,619,623,655,666,677,698
+README.md
+  s_794c6adcc8b40b::t_ab86f5c0ea73ad 5,13-14,20-21,29-30,38,48-49
+tools/forks.json
+  s_794c6adcc8b40b::t_4e1ada29e1ff46 3-6,9-12,15-18,41,64
+plugins/pstack/skills/poteto-mode/references/codex-tools.md
+  s_794c6adcc8b40b::t_6106430422d200 30,95
+plugins/pstack/skills/poteto-mode/scripts/watch-pr/wrapper.test.ts
+  s_794c6adcc8b40b::t_4e1ada29e1ff46 6
+plugins/pstack/skills/poteto-mode/playbooks/orchestrate.md
+  s_794c6adcc8b40b::t_ab86f5c0ea73ad 27
+plugins/pstack/skills/poteto-mode/SKILL.md
+  s_794c6adcc8b40b::t_7f3493c366e3ac 28,31,33,48,70,94,96,100,109,142
+docs/port-baseline.md
+  s_794c6adcc8b40b::t_efe6e825c3f5a9 1-19,21-32,62-79
+  s_794c6adcc8b40b::t_9641e8f61645b6 20,33-61
+VERSION
+  s_794c6adcc8b40b::t_ab86f5c0ea73ad 1
+.agents/plugins/marketplace.json
+  s_794c6adcc8b40b::t_bc97099f2e95af 2,16-18
+.claude-plugin/marketplace.json
+  s_b52e193ca9fc0c::t_f91191bc7bb642 2,4-5,13
+.gitignore
+  s_794c6adcc8b40b::t_b594b305eaa365 19-21
+.serena/.gitignore
+  s_794c6adcc8b40b::t_3d9b52a11dad1d 1-2
+.serena/project.yml
+  s_794c6adcc8b40b::t_da7b5e59c4e011 1-169
+docs/reference.md
+  s_794c6adcc8b40b::t_e331aa7fcb26c3 83-84,105,112,141
+package.json
+  s_b52e193ca9fc0c::t_bb3a6f82f7b3c2 4,7-8,10-11
+plugins/pstack/.claude-plugin/plugin.json
+  s_b52e193ca9fc0c::t_fac7c960ce9028 4,7-8,10-11
+plugins/pstack/.codex-plugin/plugin.json
+  s_b52e193ca9fc0c::t_0ac3cb495b01a0 3,6-7,9-10,36,47
+plugins/pstack/.github/plugin/plugin.json
+  s_b52e193ca9fc0c::t_946e5e9e2f2218 4,7-8,10-11,13-20
+plugins/pstack/skills/blast-radius/SKILL.md
+  s_794c6adcc8b40b::t_2084bb17b4b5e0 3,8
+plugins/pstack/skills/bro/SKILL.md
+  s_794c6adcc8b40b::t_7313607fea0094 3
+plugins/pstack/skills/poteto-mode/playbooks/autopilot-full.md
+  s_794c6adcc8b40b::t_36f24a5fbf9048 5,7-8,10-12
+plugins/pstack/skills/poteto-mode/playbooks/autopilot-stack.md
+  s_794c6adcc8b40b::t_276fd3f3dd9d5c 6-8,10-11
+plugins/pstack/skills/poteto-mode/playbooks/babysit.md
+  s_794c6adcc8b40b::t_c65fb843004520 12
+plugins/pstack/skills/poteto-mode/playbooks/bug-fix.md
+  s_794c6adcc8b40b::t_51a0f666b10c79 15
+plugins/pstack/skills/poteto-mode/playbooks/feature.md
+  s_794c6adcc8b40b::t_963f02e4b35b86 12
+plugins/pstack/skills/poteto-mode/playbooks/opening-a-pr.md
+  s_794c6adcc8b40b::t_3b050195bca1c8 5,34
+plugins/pstack/skills/poteto-mode/playbooks/pause-safely.md
+  s_794c6adcc8b40b::t_566cd48755e431 8
+plugins/pstack/skills/poteto-mode/playbooks/session-pickup.md
+  s_794c6adcc8b40b::t_de06cc13276993 5-7
+plugins/pstack/skills/poteto-mode/playbooks/shipping.md
+  s_794c6adcc8b40b::t_e7949302a42de1 5,7,9-17,19
+plugins/pstack/skills/poteto-mode/references/pi-tools.md
+  s_794c6adcc8b40b::t_7c3ec7d5f4e34e 29
+plugins/pstack/skills/poteto-mode/scripts/bootstrap.ts
+  s_794c6adcc8b40b::t_69b26e48eed49e 36,53-61
+plugins/pstack/skills/poteto-mode/scripts/orch/orch.test.ts
+  s_794c6adcc8b40b::t_6d586b86ac7049 53,118,148-159,164,561
+plugins/pstack/skills/poteto-mode/scripts/orch/store.ts
+  s_794c6adcc8b40b::t_9799f284938efd 345,884,1013,1045,1075-1080,1106,1109-1117,1126,1143-1148,1161-1162,1495
+plugins/pstack/skills/poteto-mode/scripts/watch-pr/cli.ts
+  s_794c6adcc8b40b::t_0560a93066684f 159,161,175,179,201-206,210
+plugins/pstack/skills/poteto-mode/scripts/watch-pr/fakes.test-helper.ts
+  s_794c6adcc8b40b::t_f80c61a1c00911 95,107
+plugins/pstack/skills/poteto-mode/scripts/watch-pr/github.test.ts
+  s_794c6adcc8b40b::t_8a579470b6d7bc 31,41-42,45,58,60
+plugins/pstack/skills/poteto-mode/scripts/watch-pr/policy.test.ts
+  s_794c6adcc8b40b::t_8416566f9ecde6 66,148,321,329,332,402,404,408
+plugins/pstack/skills/poteto-mode/scripts/watch-pr/policy.ts
+  s_794c6adcc8b40b::t_4d879531f802e3 1,34-38,49-67,78-80,88-93,95-121,128-134,163-165,173,191,198,348-352,358,368-369,379-381,392-398,404-409,529,541,622-627,642,677-683,716-720,761-765,795-808,819
+plugins/pstack/skills/poteto-mode/scripts/watch-pr/render.ts
+  s_794c6adcc8b40b::t_f402c64cb4fa04 31,43,113,152
+plugins/pstack/skills/poteto-mode/scripts/watch-pr/types.ts
+  s_794c6adcc8b40b::t_514538c2123ab8 41,89,117,144,154,165,168,181,378-381
+plugins/pstack/skills/principle-attack-the-premise/SKILL.md
+  s_794c6adcc8b40b::t_5f386ec17e12ff 3,7,9,11,13-17,19-21,23
+plugins/pstack/skills/principle-test-behavior-not-implementation/SKILL.md
+  s_794c6adcc8b40b::t_097353d9937b49 3,7,9,11,13-25
+plugins/pstack/skills/recall/SKILL.md
+  s_794c6adcc8b40b::t_2d4ff97abdebe2 3,16,21-23
+plugins/pstack/skills/show-me-your-work/SKILL.md
+  s_794c6adcc8b40b::t_8e65d2c4c65f8d 39
+plugins/pstack/skills/show-me-your-work/scripts/log.sh
+  s_794c6adcc8b40b::t_1dff5feed439cd 28,36
+plugins/pstack/skills/tdd/SKILL.md
+  s_794c6adcc8b40b::t_4aed0b66e871af 17,39
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.7.5",
+  "base_commit_sha": "f044c64647bf3c4ca8a227d6ce182988cd495cd5",
+  "prompts": {},
+  "sessions": {
+    "s_794c6adcc8b40b": {
+      "agent_id": {
+        "tool": "codex",
+        "id": "01a10f0a-52fa-7bc3-969e-5a528744d625",
+        "model": "gpt-6.1-sol"
+      },
+      "human_author": "pattara <pattaraprach@gmail.com>"
+    },
+    "s_b52e193ca9fc0c": {
+      "agent_id": {
+        "tool": "claude",
+        "id": "fd1adca8-6ecf-4e31-8896-19abb6985def",
+        "model": "claude-opus-5-5"
+      },
+      "human_author": "pattara <pattaraprach@gmail.com>"
+    }
+  }
+}
