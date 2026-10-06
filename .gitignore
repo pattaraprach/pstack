@@ -16,6 +16,3 @@ plugins/pstack/skills/poteto-mode/scripts/node_modules/
 
 # bun installs the typebox peer for the Pi extension tests
 /node_modules/
-
-# graft's local graph cache — regenerable, not committed (run `graft build`).
-/graft/
