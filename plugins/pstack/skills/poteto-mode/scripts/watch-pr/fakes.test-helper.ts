@@ -10,7 +10,6 @@ import type {
   ReviewThread,
   RollupPage,
 } from "./types.ts";
-import { parsePullRequest } from "./github.ts";
 import { parsePrNumber } from "./types.ts";
 
 export interface FakeReaderOptions {
@@ -72,7 +71,6 @@ export function fakeReader(
     mergeStateStatus: "CLEAN",
     reviewDecision: "APPROVED",
     headRefOid: "head",
-    baseRefOid: "base",
     headRefName: "feature",
     baseRefName: "main",
     state: "OPEN",
@@ -94,16 +92,7 @@ export function fakeReader(
     },
     async pullRequest(requested) {
       calls.push("pullRequest");
-      return parsePullRequest({ ...defaults, ...options.facts }, requested);
-    },
-    async revision(requested) {
-      calls.push("revision");
-      return {
-        context: requested,
-        baseRefOid: options.facts?.baseRefOid ?? "base",
-        headRefOid: options.facts?.headRefOid ?? "head",
-        baseRefName: options.facts?.baseRefName ?? defaults.baseRefName,
-      };
+      return { ...defaults, ...options.facts, context: requested };
     },
     async openPullRequests() {
       calls.push("openPullRequests");
@@ -115,13 +104,7 @@ export function fakeReader(
     },
     async checkRollupPage(_requested, after) {
       calls.push(`checkRollupPage:${after ?? "null"}`);
-      return (
-        options.rollupPages?.[page++] ?? {
-          kind: "contexts",
-          checks: [],
-          endCursor: null,
-        }
-      );
+      return options.rollupPages?.[page++] ?? { checks: [], endCursor: null };
     },
     async reviewThreads() {
       calls.push("reviewThreads");

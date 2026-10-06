@@ -7,18 +7,17 @@ import { fileURLToPath } from "node:url";
 
 const logScript = fileURLToPath(new URL("../plugins/pstack/skills/show-me-your-work/scripts/log.sh", import.meta.url));
 
-// A spreadsheet runs a leading = + - @ as a formula, and a quote-aware TSV
-// reader unwraps a leading " (or runs an unterminated one into later rows).
-test("cells a spreadsheet or TSV reader would reinterpret are written with a leading quote", () => {
+test("formula cells are escaped and ordinary quoted text is preserved", () => {
   const dir = mkdtempSync(join(tmpdir(), "pstack-log-"));
   try {
     const log = join(dir, "log.tsv");
-    const risky = ['"=HYPERLINK(""http://x"")"', '"unterminated', "=1+1", "+1", "-1", "@SUM(A1)"];
-    for (const cell of [...risky, "plain"]) {
+    const risky = ["=1+1", "+1", "-1", "@SUM(A1)"];
+    const ordinary = ['"quoted"', '"unterminated', "plain"];
+    for (const cell of [...risky, ...ordinary]) {
       execFileSync("bash", [logScript, log, "phase", cell, "why", "evidence", "result"]);
     }
     const rows = readFileSync(log, "utf8").trimEnd().split("\n").slice(1).map((line) => line.split("\t"));
-    expect(rows.map((row) => row[2])).toEqual([...risky.map((cell) => `'${cell}`), "plain"]);
+    expect(rows.map((row) => row[2])).toEqual(["'=1+1", "'+1", "'-1", "'@SUM(A1)", '"quoted"', '"unterminated', "plain"]);
   } finally {
     rmSync(dir, { recursive: true, force: true });
   }

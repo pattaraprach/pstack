@@ -89,6 +89,11 @@ function symlinkTargets(dir) {
       return [[link, realpathSync(link)]];
     } catch (error) {
       if (error.code === "ENOENT" || error.code === "ELOOP") return [];
+      // Bun on macOS can reject automount links that Node resolves correctly.
+      if (error.code === "EPERM" && process.platform === "darwin" && process.versions.bun) {
+        const target = execFileSync("node", ["-e", "process.stdout.write(require('node:fs').realpathSync(process.argv[1]))", link], { encoding: "utf8" });
+        return [[link, target]];
+      }
       throw error;
     }
   });

@@ -2,6 +2,10 @@
 
 This file is the release changelog, with one `## <version> - <title>` entry per release, newest first. The Cursor-to-Claude rewrite rules live in [`tools/substitutions.json`](tools/substitutions.json), and the [sync boundary](CONTRIBUTING.md#the-sync-boundary) in `CONTRIBUTING.md` defines how a change to upstream's skill content is declared.
 
+## 0.9.74 - restore official PStack behavior
+
+Restore all declared policy forks from official PStack at `2cbf585` and cursor-team-kit at `e46364b8be46000b7df0f260550cd712afbb8d36`, through the inherited substitutions and generator. Keep runtime tool mappings, task fallback, host drivers, model mapping, and whole-tree typechecking as compatibility changes. Remove tests and merge-policy helpers that depend on the deleted policies. The fork uses the `pstack-faithful` marketplace, preserves the existing sync machinery and runtime packages, and starts the Codex trial with automatic routing off. See [port baseline](docs/port-baseline.md) for the audit and verification.
+
 ## 0.9.73 - run pstack on GitHub Copilot
 
 pstack now installs on the GitHub Copilot CLI and the GitHub Copilot app. `copilot plugin marketplace add michael-denyer/pstack-claude` and `copilot plugin install pstack@pstack-claude` read the existing Claude Code marketplace. The CLI and the app share `~/.copilot`, so one install serves both. Skills load by bare name through Copilot's `skill` tool, a user types `/pstack:<skill>` in the CLI, and the agents load as `pstack:poteto-agent` and `pstack:comment-sicko`.

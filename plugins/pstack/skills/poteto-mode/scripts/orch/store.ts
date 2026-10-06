@@ -13,7 +13,6 @@ import {
   writeFile,
 } from "node:fs/promises";
 import { basename, dirname, join, resolve } from "node:path";
-import { stripVTControlCharacters } from "node:util";
 
 const UNIT_HEADER = "id\ttrack\tstate\tbranch\tpr\tsha\tbrief";
 const LEDGER_HEADER = "pr\tsha\tverdict\tevidence\tverifier\tts";
@@ -177,7 +176,6 @@ export interface AddStandingParams {
 
 export interface OpenStoreOptions {
   readonly force?: boolean;
-  readonly gt?: string;
   readonly onLockStolen?: (holder: string) => void;
   readonly onStaleLock?: (holder: string) => void;
 }
@@ -344,7 +342,7 @@ async function atomicWrite(path: string, contents: string): Promise<void> {
     await writeFile(temporary, contents, { flag: "wx" });
     await rename(temporary, path);
   } finally {
-    await rm(temporary, { force: true }).catch(() => {});
+    await rm(temporary, { force: true });
   }
 }
 
@@ -883,7 +881,7 @@ function changed(before: StatusSummary | null, after: StatusSummary): string {
 }
 
 function markdown(value: string): string {
-  return value.replace(/[\t\n\r]/g, " ").replace(/\\/g, "\\\\").replace(/\|/g, "\\|");
+  return value.replace(/\\/g, "\\\\").replace(/\|/g, "\\|");
 }
 
 function table(
@@ -1012,7 +1010,7 @@ function parseGtPullRequest({
   detail: string;
 }): GtPullRequest {
   const match =
-    /^(?:\[origin\] )?PR #([1-9]\d*)(?: \(([^)\r\n]+)\))?( .+)?$/.exec(
+    /^(?:\[origin\] )?PR #([1-9]\d*)(?: \(([^)\r\n]+)\))?(?: .+)?$/.exec(
       detail
     );
   const pr = Number(match?.[1] ?? 0);
@@ -1022,12 +1020,6 @@ function parseGtPullRequest({
     );
   }
   const status = match[2];
-  // A nested-paren status ("Needs approvals (2)") leaves the status group empty.
-  if (status === undefined && match[3]?.startsWith(" (")) {
-    throw new UserError(
-      `gt info output has an invalid PR row for branch ${branch}: ${detail}`
-    );
-  }
   if (status === "Merged") {
     return { pr, state: "MERGED" };
   }
@@ -1049,9 +1041,8 @@ function parseGtBranches(raw: string): readonly string[] {
     if (line.length === 0) {
       continue;
     }
-    // (?!-): a leading-dash branch would parse as an option to git and gt.
     const branchMatch =
-      /^(?:│ )*[◯◉] +((?!-)[^\s]+)((?: \([^()\r\n]*\))*)$/.exec(line);
+      /^(?:│ )*[◯◉] +([^\s]+)((?: \([^()\r\n]*\))*)$/.exec(line);
     if (branchMatch === null) {
       throw new UserError(
         `gt log short output has an unparseable line ${index + 1}: ${JSON.stringify(line)}`
@@ -1074,24 +1065,19 @@ function parseGtBranches(raw: string): readonly string[] {
 
 function graphitePullRequest({
   branch,
-  gt,
   repo,
 }: {
   branch: string;
-  gt: string;
   repo: string;
 }): GtPullRequest {
   let raw: string;
   try {
-    // A colour setting such as FORCE_COLOR in the user's environment must not
-    // break the gt parsers.
-    raw = stripVTControlCharacters(
-      execFileSync(gt, ["--no-interactive", "info", branch], {
-        cwd: repo,
-        encoding: "utf8",
-        stdio: ["ignore", "pipe", "pipe"],
-      })
-    );
+    raw = execFileSync("gt", ["--no-interactive", "info", branch], {
+      cwd: repo,
+      encoding: "utf8",
+      env: { ...process.env, NO_COLOR: "1" },
+      stdio: ["ignore", "pipe", "pipe"],
+    });
   } catch (error) {
     throw new UserError(
       `gt info ${branch} failed: ${errorMessage(error)}`
@@ -1117,25 +1103,18 @@ function graphitePullRequest({
   return parseGtPullRequest({ branch, detail: rows[0] ?? "" });
 }
 
-function graphiteFrontier({
-  gt,
-  repo,
-}: {
-  gt: string;
-  repo: string;
-}): readonly GtFrontierEntry[] {
+function graphiteFrontier(repo: string): readonly GtFrontierEntry[] {
   let raw: string;
   try {
-    raw = stripVTControlCharacters(
-      execFileSync(
-        gt,
-        ["--no-interactive", "log", "short", "--stack", "--reverse"],
-        {
-          cwd: repo,
-          encoding: "utf8",
-          stdio: ["ignore", "pipe", "pipe"],
-        }
-      )
+    raw = execFileSync(
+      "gt",
+      ["--no-interactive", "log", "short", "--stack", "--reverse"],
+      {
+        cwd: repo,
+        encoding: "utf8",
+        env: { ...process.env, NO_COLOR: "1" },
+        stdio: ["ignore", "pipe", "pipe"],
+      }
     );
   } catch (error) {
     throw new UserError(
@@ -1144,7 +1123,7 @@ function graphiteFrontier({
   }
   const result = parseGtBranches(raw).map((branch) => ({
     branches: branch,
-    ...graphitePullRequest({ branch, gt, repo }),
+    ...graphitePullRequest({ branch, repo }),
   }));
   if (new Set(result.map((row) => row.pr)).size !== result.length) {
     throw new UserError("gt info output contains duplicate pull requests");
@@ -1161,15 +1140,12 @@ function branchSha({
 }): string {
   let raw: string;
   try {
-    raw = execFileSync(
-      "git",
-      ["rev-parse", "--verify", `refs/heads/${branch}^{commit}`],
-      {
-        cwd: repo,
-        encoding: "utf8",
-        stdio: ["ignore", "pipe", "pipe"],
-      }
-    );
+    raw = execFileSync("git", ["rev-parse", branch], {
+      cwd: repo,
+      encoding: "utf8",
+      env: process.env,
+      stdio: ["ignore", "pipe", "pipe"],
+    });
   } catch (error) {
     throw new UserError(
       `git rev-parse ${branch} failed: ${errorMessage(error)}`
@@ -1182,14 +1158,8 @@ function branchSha({
   return sha;
 }
 
-function resolveFrontier({
-  gt,
-  repo,
-}: {
-  gt: string;
-  repo: string;
-}): readonly FrontierPr[] {
-  return graphiteFrontier({ gt, repo }).map((row) => ({
+function resolveFrontier(repo: string): readonly FrontierPr[] {
+  return graphiteFrontier(repo).map((row) => ({
     ...row,
     sha: branchSha({ branch: row.branches, repo }),
   }));
@@ -1522,7 +1492,7 @@ export function openStore(
           throw new UserError("--prs must not contain duplicates");
         }
         const old = await readFrontier(store);
-        const prs = resolveFrontier({ gt: options.gt ?? "gt", repo });
+        const prs = resolveFrontier(repo);
         if (pin !== undefined) {
           validateFrontierPin({
             actual: prs.map((row) => row.pr),

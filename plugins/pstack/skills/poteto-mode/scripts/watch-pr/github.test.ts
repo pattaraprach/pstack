@@ -2,10 +2,8 @@ import { describe, expect, it } from "bun:test";
 import {
   ChecksUnavailable,
   WatcherQueryError,
-  discoverStack,
   mapRollupNode,
   orderStack,
-  parseFastCheck,
   parsePullRequest,
   parseReviewThreads,
   resolveChecks,
@@ -17,7 +15,6 @@ import {
   passingCheck,
   pendingCheck,
 } from "./fakes.test-helper.ts";
-import type { CheckRead, ReportedChecks } from "./types.ts";
 import { parsePrNumber } from "./types.ts";
 
 const context = {
@@ -26,18 +23,12 @@ const context = {
   number: parsePrNumber(42),
 };
 
-function reported(read: CheckRead): ReportedChecks {
-  if (read.kind !== "reported")
-    throw new Error(`expected checks: ${read.kind}`);
-  return read;
-}
-
 describe("checks fallback chain", () => {
   it("uses a non-empty fast-path result without a rollup query", async () => {
     const reader = fakeReader({
       fastPath: { kind: "checks", checks: [passingCheck("fast")] },
     });
-    const read = reported(await resolveChecks(reader, context));
+    const read = await resolveChecks(reader, context);
     expect(read.source).toBe("gh-pr-checks");
     expect(read.checks.map((check) => check.name)).toEqual(["fast"]);
     expect(reader.calls).toEqual(["checksFastPath"]);
@@ -47,15 +38,11 @@ describe("checks fallback chain", () => {
     const reader = fakeReader({
       fastPath: { kind: "unusable", exitCode: 8, stderr: "" },
       rollupPages: [
-        {
-          kind: "contexts",
-          checks: [passingCheck("first")],
-          endCursor: "next",
-        },
-        { kind: "contexts", checks: [failedCheck("second")], endCursor: null },
+        { checks: [passingCheck("first")], endCursor: "next" },
+        { checks: [failedCheck("second")], endCursor: null },
       ],
     });
-    const read = reported(await resolveChecks(reader, context));
+    const read = await resolveChecks(reader, context);
     expect(read.source).toBe("graphql-rollup");
     expect(read.checks.map((check) => check.name)).toEqual(["first", "second"]);
     expect(reader.calls).toEqual([
@@ -68,15 +55,9 @@ describe("checks fallback chain", () => {
   it("falls back when valid fast-path JSON represented an empty list", async () => {
     const reader = fakeReader({
       fastPath: { kind: "checks", checks: [] },
-      rollupPages: [
-        {
-          kind: "contexts",
-          checks: [pendingCheck("fallback")],
-          endCursor: null,
-        },
-      ],
+      rollupPages: [{ checks: [pendingCheck("fallback")], endCursor: null }],
     });
-    expect(reported(await resolveChecks(reader, context)).checks[0].name).toBe(
+    expect((await resolveChecks(reader, context)).checks[0].name).toBe(
       "fallback"
     );
     expect(reader.calls).toEqual(["checksFastPath", "checkRollupPage:null"]);
@@ -94,50 +75,6 @@ describe("checks fallback chain", () => {
       ChecksUnavailable
     );
     expect(reader.calls).toEqual(["checksFastPath", "checkRollupPage:null"]);
-  });
-
-  it("reads no checks when gh reports none and the head commit has no rollup", async () => {
-    const reader = fakeReader({
-      fastPath: { kind: "none-reported" },
-      rollupPages: [{ kind: "no-rollup" }],
-    });
-    expect(await resolveChecks(reader, context)).toEqual({ kind: "no-checks" });
-    expect(reader.calls).toEqual(["checksFastPath", "checkRollupPage:null"]);
-  });
-
-  it("fails closed when only one read says there are no checks", async () => {
-    const oneSided = [
-      {
-        fastPath: { kind: "unusable", exitCode: 1, stderr: "HTTP 401" },
-        rollupPages: [{ kind: "no-rollup" }],
-      },
-      {
-        fastPath: { kind: "checks", checks: [] },
-        rollupPages: [{ kind: "no-rollup" }],
-      },
-      {
-        fastPath: { kind: "none-reported" },
-        rollupPages: [{ kind: "contexts", checks: [], endCursor: null }],
-      },
-    ] as const;
-    for (const options of oneSided)
-      await expect(
-        resolveChecks(fakeReader(options), context)
-      ).rejects.toBeInstanceOf(ChecksUnavailable);
-  });
-
-  it("propagates a failed rollup query instead of reading it as no checks", async () => {
-    const reader = fakeReader({ fastPath: { kind: "none-reported" } });
-    const failure = new WatcherQueryError({
-      kind: "command-exit",
-      retryable: true,
-      code: 1,
-      detail: "HTTP 502",
-    });
-    reader.checkRollupPage = async () => {
-      throw failure;
-    };
-    await expect(resolveChecks(reader, context)).rejects.toBe(failure);
   });
 });
 
@@ -201,40 +138,12 @@ describe("rollup node mapping", () => {
   });
 });
 
-describe("fast-path check mapping", () => {
-  // gh's aggregate.go files every state it does not name into the pending
-  // bucket, including completed conclusions.
-  it("fails completed conclusions that gh buckets as pending", () => {
-    for (const state of ["STARTUP_FAILURE", "STALE"]) {
-      expect(
-        parseFastCheck({ name: "ci", state, bucket: "pending" })
-      ).toMatchObject({ kind: "failed", reportedState: state });
-    }
-  });
-
-  it("keeps in-flight states pending", () => {
-    for (const state of [
-      "EXPECTED",
-      "REQUESTED",
-      "WAITING",
-      "QUEUED",
-      "PENDING",
-      "IN_PROGRESS",
-    ]) {
-      expect(
-        parseFastCheck({ name: "ci", state, bucket: "pending" })
-      ).toMatchObject({ kind: "pending", reportedState: state });
-    }
-  });
-});
-
 describe("closed enum parsing", () => {
   const rawPullRequest = {
     mergeable: "MERGEABLE",
     mergeStateStatus: "CLEAN",
     reviewDecision: "APPROVED",
     headRefOid: "head",
-    baseRefOid: "base",
     headRefName: "feature",
     baseRefName: "main",
     state: "OPEN",
@@ -374,71 +283,24 @@ describe("context and stack discovery", () => {
     expect(reader.calls).toEqual(["originRepo"]);
   });
 
-  it("refuses to pair the checkout's PR number with a different explicit repository", async () => {
-    const reader = fakeReader({
-      current: { owner: "acme", repo: "web", number: parsePrNumber(57) },
-    });
-    const resolved = resolveContext({
-      reader,
-      owner: "acme",
-      repo: "api",
-      pr: null,
-    });
-    await expect(resolved).rejects.toBeInstanceOf(WatcherQueryError);
-    await expect(resolved).rejects.toMatchObject({
-      failure: { retryable: false },
-    });
-  });
-
-  it("accepts an explicit repository that matches the checkout's PR", async () => {
-    const reader = fakeReader({
-      current: { owner: "acme", repo: "web", number: parsePrNumber(57) },
-    });
-    expect(
-      await resolveContext({ reader, owner: "ACME", repo: "Web", pr: null })
-    ).toEqual({ owner: "ACME", repo: "Web", number: parsePrNumber(57) });
-  });
-
   it("orders the connected stack bottom-to-top", () => {
     const ordered = orderStack(context, [
       {
         number: parsePrNumber(41),
-        headRepository: { owner: "owner", repo: "repo" },
         headRefName: "base-feature",
         baseRefName: "main",
       },
       {
         number: context.number,
-        headRepository: { owner: "owner", repo: "repo" },
         headRefName: "feature",
         baseRefName: "base-feature",
       },
       {
         number: parsePrNumber(43),
-        headRepository: { owner: "owner", repo: "repo" },
         headRefName: "upstack",
         baseRefName: "feature",
       },
     ]);
     expect(ordered.map((item) => Number(item.number))).toEqual([41, 42, 43]);
-  });
-
-  it("refuses a full open-PR page, which may have cut the stack", async () => {
-    const openPrs = (count: number) =>
-      Array.from({ length: count }, (_, index) => ({
-        number: parsePrNumber(index + 1),
-        headRepository: { owner: "owner", repo: "repo" },
-        headRefName: `branch-${index + 1}`,
-        baseRefName: "main",
-      }));
-    await expect(
-      discoverStack(fakeReader({ openPullRequests: openPrs(300) }), context)
-    ).rejects.toMatchObject({ failure: { kind: "invalid-stack" } });
-    expect(
-      await discoverStack(
-        fakeReader({ openPullRequests: openPrs(299) }),
-        context
-      )
-    ).toEqual([context]);
   });
 });

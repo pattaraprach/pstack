@@ -1,5 +1,4 @@
 import { setTimeout as delay } from "node:timers/promises";
-import { DeadlineExceeded, WatchDeadline } from "./deadline.ts";
 import {
   Command,
   CommanderError,
@@ -14,7 +13,6 @@ import {
 } from "./github.ts";
 import {
   runQueued,
-  deadlineVerdict,
   runSimple,
   statusQueryVerdict,
   verdictFactory,
@@ -153,17 +151,14 @@ export function parseArgs(
   };
 }
 export interface CliRuntime {
-  readonly deadline: WatchDeadline;
   readonly reader: T.GitHubReader;
   readonly clock: WatchClock;
   readonly stdout: (value: string) => void;
   readonly stderr: (value: string) => void;
 }
-function realRuntime(timeout: number): CliRuntime {
-  const deadline = new WatchDeadline(timeout, () => performance.now() / 1_000);
+function realRuntime(): CliRuntime {
   return {
-    deadline,
-    reader: new GhGitHubReader(deadline),
+    reader: new GhGitHubReader(),
     clock: {
       now: () => performance.now() / 1_000,
       observedAt: () => new Date().toISOString(),
@@ -177,22 +172,15 @@ function realRuntime(timeout: number): CliRuntime {
 }
 export async function main(
   argv: readonly string[],
-  supplied?: CliRuntime
+  runtime: CliRuntime = realRuntime()
 ): Promise<number> {
   let options: CliOptions;
   try {
-    options = parseArgs(
-      argv,
-      supplied ?? {
-        stdout: (value) => process.stdout.write(value),
-        stderr: (value) => process.stderr.write(value),
-      }
-    );
+    options = parseArgs(argv, runtime);
   } catch (error) {
     if (!(error instanceof CommanderError)) throw error;
     return error.exitCode === 0 ? 0 : 64;
   }
-  const runtime = supplied ?? realRuntime(options.polling.timeout);
   const render = options.pretty ? renderPretty : renderJson;
   const emit = (verdict: T.ProgressVerdict): void =>
     runtime.stdout(render(verdict));
@@ -210,28 +198,16 @@ export async function main(
         ? [seed]
         : await discoverStack(runtime.reader, seed));
   } catch (error) {
-    if (
-      !(error instanceof WatcherQueryError) &&
-      !(error instanceof DeadlineExceeded)
-    )
-      throw error;
-    const verdict =
-      error instanceof DeadlineExceeded
-        ? deadlineVerdict(verdictFactory(runtime.clock, options.mode))
-        : statusQueryVerdict(
-            verdictFactory(runtime.clock, options.mode),
-            1,
-            error.failure
-          );
+    if (!(error instanceof WatcherQueryError)) throw error;
+    const verdict = statusQueryVerdict(
+      verdictFactory(runtime.clock, options.mode),
+      1,
+      error.failure
+    );
     runtime.stdout(render(verdict));
     return verdict.exitCode;
   }
-  const dependencies = {
-    reader: runtime.reader,
-    clock: runtime.clock,
-    emit,
-    deadline: runtime.deadline,
-  };
+  const dependencies = { reader: runtime.reader, clock: runtime.clock, emit };
   const verdict =
     options.mode === "queued-stack" && !options.statusOnly
       ? await runQueued({ dependencies, contexts, options: options.polling })

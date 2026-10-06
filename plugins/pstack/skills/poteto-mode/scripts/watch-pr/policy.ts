@@ -1,10 +1,4 @@
-import { landingRevision, sameLandingRevision } from "./landing.ts";
-import {
-  ChecksUnavailable,
-  WatcherQueryError,
-  resolveChecks,
-} from "./github.ts";
-import { DeadlineExceeded, type WatchDeadline } from "./deadline.ts";
+import { WatcherQueryError, resolveChecks } from "./github.ts";
 import type * as T from "./types.ts";
 import { nonEmpty } from "./types.ts";
 export function assessGitHubMerge(args: {
@@ -37,16 +31,12 @@ async function mergeAssessment(
   facts: T.PullRequestFacts
 ) {
   const commits = await reader.commitRollups(facts.context);
-  const head = commits.find((commit) => commit.oid === facts.headRefOid);
-  if (head === undefined)
-    throw new WatcherQueryError({
-      kind: "snapshot-changed",
-      retryable: true,
-      detail: `commit response does not contain expected head ${facts.headRefOid}`,
-    });
-  const headRollupState = head.state;
+  const headRollupState =
+    facts.headRefOid === null
+      ? null
+      : (commits.find((commit) => commit.oid === facts.headRefOid)?.state ??
+        null);
   return {
-    anyCommitReported: commits.some((commit) => commit.state !== null),
     hadPreviousPassingCi: commits.some(
       (commit) => commit.oid !== facts.headRefOid && commit.state === "SUCCESS"
     ),
@@ -54,87 +44,6 @@ async function mergeAssessment(
       mergeStateStatus: facts.mergeStateStatus,
       headRollupState,
     }),
-  };
-}
-// Right after a push the head rollup is null until the first check registers.
-// An earlier commit that reported checks, or mergeability GitHub is still
-// computing, means the head has not reported yet.
-async function noChecksCi(
-  reader: T.GitHubReader,
-  facts: T.PullRequestFacts
-): Promise<T.CiNone> {
-  const merge = await mergeAssessment(reader, facts);
-  if (merge.anyCommitReported || merge.github.kind === "refused")
-    throw new ChecksUnavailable(
-      `no checks reported on head ${facts.headRefOid}, but a commit on this PR has reported checks`
-    );
-  if (facts.mergeable === "UNKNOWN")
-    throw new ChecksUnavailable(
-      `no checks reported on head ${facts.headRefOid}, and GitHub has not computed mergeability yet`
-    );
-  return {
-    kind: "ci-none",
-    failed: [],
-    pending: [],
-    hadPreviousPassingCi: false,
-    github: merge.github,
-  };
-}
-async function reportedCi(
-  reader: T.GitHubReader,
-  facts: T.PullRequestFacts,
-  checks: T.ReportedChecks,
-  pendingHistory: "include" | "omit"
-): Promise<T.CiState> {
-  const failed = nonEmpty(
-    checks.checks.filter(
-      (check): check is T.FailedCheck => check.kind === "failed"
-    )
-  );
-  const pending = nonEmpty(
-    checks.checks.filter(
-      (check): check is T.PendingCheck => check.kind === "pending"
-    )
-  );
-  if (failed === null && pending !== null && pendingHistory === "omit")
-    return {
-      kind: "ci-pending",
-      source: checks.source,
-      all: checks.checks,
-      failed: [],
-      pending,
-      hadPreviousPassingCi: false,
-    };
-  const merge = await mergeAssessment(reader, facts);
-  const base = {
-    source: checks.source,
-    all: checks.checks,
-    hadPreviousPassingCi: merge.hadPreviousPassingCi,
-  };
-  if (failed !== null)
-    return {
-      ...base,
-      kind: "ci-failing",
-      failed,
-      pending: pending ?? [],
-      github: merge.github,
-    };
-  if (merge.github.kind === "refused")
-    return {
-      ...base,
-      kind: "ci-github-rejected",
-      failed: [],
-      pending: pending ?? [],
-      github: merge.github,
-    };
-  if (pending !== null)
-    return { ...base, kind: "ci-pending", failed: [], pending };
-  return {
-    ...base,
-    kind: "ci-clean",
-    failed: [],
-    pending: [],
-    github: merge.github,
   };
 }
 const AUTOMATION_TOKENS = [
@@ -154,36 +63,75 @@ export async function readSnapshot(args: {
     return { kind: "merged", context: args.context, facts };
   if (facts.state === "CLOSED")
     return { kind: "closed", context: args.context, facts };
-  const [threads, checks] = await Promise.all([
-    args.reader.reviewThreads(args.context),
-    resolveChecks(args.reader, args.context),
-  ]);
-  const ci =
-    checks.kind === "no-checks"
-      ? await noChecksCi(args.reader, facts)
-      : await reportedCi(args.reader, facts, checks, args.pendingHistory);
-  const revision = await args.reader.revision(args.context);
-  if (!sameLandingRevision(facts, revision))
-    throw new WatcherQueryError({
-      kind: "snapshot-changed",
-      retryable: true,
-      detail: `PR head or destination changed while collecting ${facts.headRefOid} against ${facts.baseRefName}`,
-    });
+  const threads = await args.reader.reviewThreads(args.context);
+  const checks = await resolveChecks(args.reader, args.context);
+  const failed = nonEmpty(
+    checks.checks.filter(
+      (check): check is T.FailedCheck => check.kind === "failed"
+    )
+  );
+  const pending = nonEmpty(
+    checks.checks.filter(
+      (check): check is T.PendingCheck => check.kind === "pending"
+    )
+  );
+  let ci: T.CiState;
+  if (failed === null && pending !== null && args.pendingHistory === "omit")
+    ci = {
+      kind: "ci-pending",
+      source: checks.source,
+      all: checks.checks,
+      failed: [],
+      pending,
+      hadPreviousPassingCi: false,
+    };
+  else {
+    const merge = await mergeAssessment(args.reader, facts);
+    const base = {
+      source: checks.source,
+      all: checks.checks,
+      hadPreviousPassingCi: merge.hadPreviousPassingCi,
+    };
+    if (failed !== null)
+      ci = {
+        ...base,
+        kind: "ci-failing",
+        failed,
+        pending: pending ?? [],
+        github: merge.github,
+      };
+    else if (merge.github.kind === "refused")
+      ci = {
+        ...base,
+        kind: "ci-github-rejected",
+        failed: [],
+        pending: pending ?? [],
+        github: merge.github,
+      };
+    else if (pending !== null)
+      ci = { ...base, kind: "ci-pending", failed: [], pending };
+    else
+      ci = {
+        ...base,
+        kind: "ci-clean",
+        failed: [],
+        pending: [],
+        github: merge.github,
+      };
+  }
   return {
     kind: "open",
     context: args.context,
     facts,
     threads,
     ci,
-    reviewAutomationRunning:
-      checks.kind === "reported" &&
-      checks.checks.some(
-        (check) =>
-          check.kind === "pending" &&
-          AUTOMATION_TOKENS.some((token) =>
-            check.name.toLowerCase().includes(token)
-          )
-      ),
+    reviewAutomationRunning: checks.checks.some(
+      (check) =>
+        check.kind === "pending" &&
+        AUTOMATION_TOKENS.some((token) =>
+          check.name.toLowerCase().includes(token)
+        )
+    ),
   };
 }
 const conflictBlocker = (row: T.PrSnapshot): T.MergeBlocker | null =>
@@ -212,26 +160,17 @@ function gateReason(
   if (row.kind === "merged") return null;
   if (row.kind === "closed") return "closed-without-merge";
   if (row.facts.isDraft && !allowDraft) return "draft-pr";
-  if (row.facts.reviewDecision === "CHANGES_REQUESTED")
-    return "changes-requested";
-  if (row.facts.reviewDecision === "REVIEW_REQUIRED") return "review-required";
-  // BLOCKED with clean CI is some other branch protection rule, such as signed
-  // commits or a required check that never reported. GitHub will not merge it.
-  return row.facts.mergeStateStatus === "BLOCKED" ? "merge-blocked" : null;
+  return row.facts.reviewDecision === "CHANGES_REQUESTED"
+    ? "changes-requested"
+    : null;
 }
-// Gates that pending checks can still explain wait for the checks first.
-const DEFERRED_WHILE_PENDING: ReadonlySet<T.MergeGateReason> = new Set([
-  "draft-pr",
-  "review-required",
-  "merge-blocked",
-]);
 function gateBlocker(
   row: T.PrSnapshot,
   allowDraft: boolean
 ): T.MergeBlocker | null {
   const reason = gateReason(row, allowDraft);
   return reason === null ||
-    (DEFERRED_WHILE_PENDING.has(reason) &&
+    (reason === "draft-pr" &&
       row.kind === "open" &&
       row.ci.kind === "ci-pending")
     ? null
@@ -249,23 +188,18 @@ function readyContribution(
     };
   if (
     row.kind !== "open" ||
-    (row.ci.kind !== "ci-clean" && row.ci.kind !== "ci-none") ||
+    row.ci.kind !== "ci-clean" ||
     row.threads.length !== 0 ||
     conflictBlocker(row) !== null ||
     gateReason(row, allowDraft) !== null
   )
     return null;
   const reviewDecision = row.facts.reviewDecision;
-  if (
-    reviewDecision === "CHANGES_REQUESTED" ||
-    reviewDecision === "REVIEW_REQUIRED"
-  )
-    return null;
+  if (reviewDecision === "CHANGES_REQUESTED") return null;
   return {
     kind: "ready-pr",
     context: row.context,
     proof: {
-      revision: landingRevision(row.facts),
       mergeability: "clear",
       threads: [],
       ci: row.ci,
@@ -407,32 +341,21 @@ export interface WatchClock {
   sleep(seconds: number): Promise<void>;
 }
 export interface RunDependencies {
-  readonly deadline: WatchDeadline;
   readonly reader: T.GitHubReader;
   readonly clock: WatchClock;
   readonly emit: (verdict: T.ProgressVerdict) => void;
 }
-export function deadlineVerdict(stamp: VerdictStamp): T.TimeoutVerdict {
-  return stamp({
-    kind: "TIMEOUT",
-    terminal: true,
-    exitCode: 5,
-    reason: {
-      kind: "status-unavailable",
-      failure: {
-        kind: "deadline",
-        retryable: false,
-        detail: "deadline reached before a complete observation",
-      },
-    },
-  });
-}
+const deadlinePassed = (
+  started: number,
+  options: T.PollingOptions,
+  now: number
+): boolean => options.timeout > 0 && now - started >= options.timeout;
 type StepResult<V> =
   | { readonly kind: "terminal"; readonly verdict: V }
   | {
       readonly kind: "sleep";
       readonly seconds: number;
-      readonly onDeadline: () => V;
+      readonly onDeadline?: () => V;
     }
   | { readonly kind: "continue" };
 async function pollUntilTerminal<V>(args: {
@@ -442,30 +365,20 @@ async function pollUntilTerminal<V>(args: {
   readonly step: () => Promise<StepResult<V>>;
 }): Promise<V | T.BlockerVerdict | T.TimeoutVerdict> {
   let failures = 0;
-  const { deadline } = args.dependencies;
-  let onDeadline: () => V | T.TimeoutVerdict = () =>
-    deadlineVerdict(args.stamp);
-  while (deadline.remaining() > 0) {
+  const started = args.dependencies.clock.now();
+  while (true) {
     let result: StepResult<V>;
     try {
       result = await args.step();
       failures = 0;
     } catch (error) {
-      if (error instanceof DeadlineExceeded) break;
       if (!(error instanceof WatcherQueryError)) throw error;
-      onDeadline = () =>
-        args.stamp({
-          kind: "TIMEOUT",
-          terminal: true,
-          exitCode: 5,
-          reason: { kind: "status-unavailable", failure: error.failure },
-        });
       failures += 1;
       if (!error.failure.retryable || failures >= args.options.maxQueryErrors)
         return statusQueryVerdict(args.stamp, failures, error.failure);
-      const retryInSeconds = Math.min(
-        deadline.remaining(),
-        queryBackoffSeconds(args.options.interval, failures)
+      const retryInSeconds = queryBackoffSeconds(
+        args.options.interval,
+        failures
       );
       args.dependencies.emit(
         args.stamp({
@@ -476,18 +389,26 @@ async function pollUntilTerminal<V>(args: {
           retryInSeconds,
         })
       );
+      if (deadlinePassed(started, args.options, args.dependencies.clock.now()))
+        return args.stamp({
+          kind: "TIMEOUT",
+          terminal: true,
+          exitCode: 5,
+          reason: { kind: "status-unavailable", failure: error.failure },
+        });
       await args.dependencies.clock.sleep(retryInSeconds);
       continue;
     }
     if (result.kind === "terminal") return result.verdict;
     if (result.kind === "sleep") {
-      onDeadline = result.onDeadline;
-      await args.dependencies.clock.sleep(
-        Math.min(result.seconds, deadline.remaining())
-      );
+      if (
+        result.onDeadline !== undefined &&
+        deadlinePassed(started, args.options, args.dependencies.clock.now())
+      )
+        return result.onDeadline();
+      await args.dependencies.clock.sleep(result.seconds);
     }
   }
-  return onDeadline();
 }
 export async function runSimple(args: {
   readonly dependencies: RunDependencies;
@@ -605,6 +526,7 @@ export interface QueueState {
   readonly nextSweepAt: number;
   readonly frontier: T.PrContext | null;
   readonly lastWaitKey: string | null;
+  readonly startedAt: number;
 }
 export const createQueueState = (
   queue: T.NonEmpty<T.PrContext>,
@@ -616,6 +538,7 @@ export const createQueueState = (
   nextSweepAt: now,
   frontier: null,
   lastWaitKey: null,
+  startedAt: now,
 });
 const orderedRows = (state: QueueState): T.PrSnapshot[] =>
   state.queue.flatMap((context) => {
@@ -697,6 +620,12 @@ export type QueueEvaluation =
       readonly remaining: number;
     }
   | {
+      readonly kind: "timeout";
+      readonly state: QueueState;
+      readonly frontier: T.PrContext;
+      readonly unmergedCount: number;
+    }
+  | {
       readonly kind: "waiting";
       readonly state: QueueState;
       readonly frontier: T.PrContext;
@@ -710,6 +639,7 @@ export type QueueEvaluation =
     };
 export function evaluateQueue(
   state: QueueState,
+  now: number,
   options: T.PollingOptions
 ): QueueEvaluation {
   const active = activeRows(state);
@@ -744,6 +674,13 @@ export function evaluateQueue(
       frontier,
       remaining: active.length,
     };
+  if (deadlinePassed(state.startedAt, options, now))
+    return {
+      kind: "timeout",
+      state: { ...state, frontier },
+      frontier,
+      unmergedCount: active.length,
+    };
   const row = rows[0];
   const pending =
     row.kind === "open" && row.ci.kind === "ci-pending" ? row.ci.pending : null;
@@ -776,7 +713,11 @@ export async function runQueued(args: {
   const step = async (): Promise<StepResult<T.QueueTerminalVerdict>> => {
     state = planQueue(state, args.dependencies.clock.now());
     if (state.work === null) {
-      const complete = evaluateQueue(state, args.options);
+      const complete = evaluateQueue(
+        state,
+        args.dependencies.clock.now(),
+        args.options
+      );
       if (complete.kind !== "complete")
         throw new Error("queue has no work while active");
       return {
@@ -817,7 +758,11 @@ export async function runQueued(args: {
         })
       );
     if (state.work !== null) return { kind: "continue" };
-    const evaluation = evaluateQueue(state, args.options);
+    const evaluation = evaluateQueue(
+      state,
+      args.dependencies.clock.now(),
+      args.options
+    );
     state = evaluation.state;
     switch (evaluation.kind) {
       case "complete":
@@ -847,6 +792,20 @@ export async function runQueued(args: {
           })
         );
         return { kind: "continue" };
+      case "timeout":
+        return {
+          kind: "terminal",
+          verdict: stamp({
+            kind: "TIMEOUT",
+            terminal: true,
+            exitCode: 5,
+            reason: {
+              kind: "queued-stack",
+              frontier: evaluation.frontier,
+              unmergedCount: evaluation.unmergedCount,
+            },
+          }),
+        };
       case "waiting":
         if (evaluation.emit)
           args.dependencies.emit(
@@ -857,21 +816,7 @@ export async function runQueued(args: {
               reason: evaluation.reason,
             })
           );
-        return {
-          kind: "sleep",
-          seconds: args.options.interval,
-          onDeadline: () =>
-            stamp({
-              kind: "TIMEOUT",
-              terminal: true,
-              exitCode: 5,
-              reason: {
-                kind: "queued-stack",
-                frontier: evaluation.frontier,
-                unmergedCount: activeRows(state).length,
-              },
-            }),
-        };
+        return { kind: "sleep", seconds: args.options.interval };
       default: {
         const exhaustive: never = evaluation;
         return exhaustive;

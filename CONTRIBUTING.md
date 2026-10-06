@@ -8,10 +8,10 @@ Thanks for helping out. This repo is a **port**, not an original work: the `skil
 
 Upstream owns skill content. This port owns the Cursor-to-Claude-Code translation. It also carries named forks, each declared in [`tools/forks.json`](tools/forks.json) as a `port-feature` (Claude Code, Codex, Pi, or GitHub Copilot mechanics upstream cannot carry) or a `policy` (a workflow change the port chose to keep).
 
-Both kinds of `SKILL.md` change land here. Upstream rarely merges pull requests from outside its own team, so this port does not ask you to land a change there first. Before changing a `SKILL.md`, work out which kind yours is:
+Official Cursor PStack is the primary behavioral upstream. Michael Denyer's repository is a secondary reference for port-machinery improvements; do not automatically merge its main branch. Before changing a `SKILL.md`, work out which kind yours is:
 
 - **Fixing the port.** A Cursor primitive that resolves wrong on Claude Code, a broken cross-reference, a stale model slug. Open a PR.
-- **Changing what a skill does.** New steps, a different workflow, reworded guidance. Open a PR here too. The port keeps the change as a `policy` fork, and every later sync merges it three ways against upstream's new text. Keep the edit small and in one place, because a wide rewrite conflicts each time upstream touches the same lines, and someone has to settle the change again under time pressure.
+- **Changing what a skill does.** Evaluate official PStack first. A local policy requires a recurring problem observed on real work, with task evidence and the smallest proposed adaptation. Do not introduce ERP-specific playbooks or change CE/Paseo for the initial trial.
 
 Declare each file your change forks in `tools/forks.json` in the same PR, so the next sync knows it is deliberate and not drift. Set the entry's `upstream` field to `not-proposed`, or to the URL of an upstream PR or issue if you opened one.
 
@@ -77,12 +77,6 @@ bunx prettier@3.6.2 --check .
 ```
 
 The scripts use Prettier 3.6.2 at upstream's settings in `.prettierrc.json`, CI runs the same check, and `.prettierignore` names each file the check skips and why.
-
-`ship-pr` has one check CI cannot run. `watch-pr/live-merge-safety.mjs` creates a private repository on your `gh` account, drives `ship-pr inspect` and `cancel-pending` against a stale head, a moved base, and a retargeted base, confirms GitHub refuses a merge at a stale SHA, merges the current head, and deletes the repository. The delete needs the `gh` token's `delete_repo` scope; when it fails, the script prints the command to delete the repository by hand. Run it from the same directory before a release that changes `watch-pr/`:
-
-```shell
-bun watch-pr/live-merge-safety.mjs --live-disposable
-```
 
 If you touched a workflow, audit it before pushing:
 
