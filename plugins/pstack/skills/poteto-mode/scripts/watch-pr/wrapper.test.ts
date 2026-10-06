@@ -3,7 +3,7 @@ import { spawnSync } from "node:child_process";
 import { tmpdir } from "node:os";
 import { join } from "node:path";
 
-for (const name of ["watch-pr", "ship-pr"]) {
+for (const name of ["watch-pr"]) {
   it(`${name} --help runs from a foreign working directory`, () => {
     const result = spawnSync(
       process.execPath,

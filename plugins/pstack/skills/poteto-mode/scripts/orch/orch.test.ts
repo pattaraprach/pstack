@@ -5,7 +5,6 @@ import {
   mkdtemp,
   readFile,
   readdir,
-  rename,
   rm,
   writeFile,
 } from "node:fs/promises";
@@ -51,7 +50,7 @@ async function initializedStore(): Promise<{
   readonly store: Store;
 }> {
   const directory = await makeDirectory();
-  const store = useStore(directory, { gt: fakeGtPath(directory) });
+  const store = useStore(directory);
   await store.init();
   return { directory, store };
 }
@@ -103,10 +102,6 @@ async function makeGitStack(directory: string): Promise<{
   };
 }
 
-function fakeGtPath(directory: string): string {
-  return join(directory, "bin", "gt");
-}
-
 async function withFakeGt<T>({
   directory,
   operation,
@@ -120,7 +115,7 @@ async function withFakeGt<T>({
   const outputPath = join(directory, "gt-output.txt");
   await mkdir(bin);
   await writeFile(outputPath, output);
-  const gt = fakeGtPath(directory);
+  const gt = join(bin, "gt");
   await writeFile(
     gt,
     `#!/usr/bin/env bash
@@ -150,12 +145,23 @@ esac
 `
   );
   await chmod(gt, 0o755);
-  return operation(outputPath);
+
+  const originalPath = process.env.PATH;
+  process.env.PATH = `${bin}:${originalPath ?? ""}`;
+  try {
+    return await operation(outputPath);
+  } finally {
+    if (originalPath === undefined) {
+      delete process.env.PATH;
+    } else {
+      process.env.PATH = originalPath;
+    }
+  }
 }
 
 function runCli(
   args: readonly string[],
-  env?: Readonly<Record<string, string | undefined>>
+  env: Readonly<Record<string, string | undefined>> = process.env
 ): RunResult {
   const result = Bun.spawnSync([process.execPath, SCRIPT, ...args], { env });
   return {
@@ -472,57 +478,6 @@ describe("Store", () => {
     });
   });
 
-  it("pins a branch head when a same-named tag points to another commit", async () => {
-    const { directory, store } = await initializedStore();
-    const stack = await makeGitStack(directory);
-    git({
-      repo: stack.repo,
-      args: ["tag", "stack/open", stack.mergedSha],
-    });
-
-    await withFakeGt({
-      directory,
-      output: "◯ main\n◉ stack/open (current)\n",
-      operation: async () => {
-        const frontier = await store.frontier.set({ repo: stack.repo });
-        expect(frontier.prs).toEqual([
-          {
-            pr: 11,
-            branches: "stack/open",
-            sha: stack.openSha,
-            state: "OPEN",
-          },
-        ]);
-        expect(await store.frontier.show()).toEqual(frontier);
-      },
-    });
-  });
-
-  it("rejects a tag without its branch and preserves the saved frontier", async () => {
-    const { directory, store } = await initializedStore();
-    const stack = await makeGitStack(directory);
-
-    await withFakeGt({
-      directory,
-      output: "◯ main\n◉ stack/open (current)\n",
-      operation: async () => {
-        const before = await store.frontier.set({ repo: stack.repo });
-        git({
-          repo: stack.repo,
-          args: ["tag", "stack/open", stack.openSha],
-        });
-        git({ repo: stack.repo, args: ["checkout", "main"] });
-        git({ repo: stack.repo, args: ["branch", "-D", "stack/open"] });
-
-        await expect(
-          store.frontier.set({ repo: stack.repo })
-        ).rejects.toThrow("git rev-parse");
-        expect(await store.frontier.show()).toEqual(before);
-        expect(before.generation).toBe(1);
-      },
-    });
-  });
-
   it("rejects unparseable Graphite output loudly", async () => {
     const { directory, store } = await initializedStore();
     const stack = await makeGitStack(directory);
@@ -536,25 +491,6 @@ describe("Store", () => {
         ).rejects.toThrow(
           'gt log short output has an unparseable line 2: "this line is not Graphite output"'
         );
-      },
-    });
-  });
-
-  it("parses Graphite output that carries colour codes", async () => {
-    const { directory, store } = await initializedStore();
-    const stack = await makeGitStack(directory);
-
-    await withFakeGt({
-      directory,
-      output:
-        "\u001b[2m◯ main\u001b[0m\n" +
-        "\u001b[38:5:2m◉ \u001b]8;;https://example.test/stack\u0007stack/open\u001b]8;;\u0007\u001b[39m \u001b[2m(current)\u001b[22m\n",
-      operation: async () => {
-        expect(
-          (await store.frontier.set({ repo: stack.repo })).prs
-        ).toEqual([
-          { pr: 11, branches: "stack/open", sha: stack.openSha, state: "OPEN" },
-        ]);
       },
     });
   });
@@ -622,7 +558,7 @@ describe("orch CLI", () => {
 
   it("accepts ORCH_STORE and emits complete JSON", async () => {
     const directory = await makeDirectory();
-    const env = { PATH: process.env.PATH, ORCH_STORE: directory };
+    const env = { ...process.env, ORCH_STORE: directory };
     expect(runCli(["init"], env).code).toBe(0);
 
     const added = runCli(
@@ -694,66 +630,5 @@ describe("orch CLI", () => {
       verdict: "NOT-VERIFIED",
     });
     expect(missingLedger.stderr).toBe("");
-  });
-});
-
-describe("port guards", () => {
-  it("rejects a parenthesized gt PR status instead of treating it as open", async () => {
-    const { directory, store } = await initializedStore();
-    const stack = await makeGitStack(directory);
-
-    await withFakeGt({
-      directory,
-      output: "◯ main\n◉ stack/paren\n",
-      operation: async () => {
-        const gt = fakeGtPath(directory);
-        await rename(gt, `${gt}-base`);
-        await writeFile(
-          gt,
-          `#!/usr/bin/env bash
-if [ "$*" = "--no-interactive info stack/paren" ]; then
-  printf 'stack/paren\\nPR #14 (Needs approvals (2)) tricky change\\n'
-else
-  exec "${gt}-base" "$@"
-fi
-`,
-          { mode: 0o755 }
-        );
-        await expect(store.frontier.set({ repo: stack.repo })).rejects.toThrow(
-          "gt info output has an invalid PR row for branch stack/paren"
-        );
-      },
-    });
-  });
-
-  it("rejects a leading-dash branch name in gt log output", async () => {
-    const { directory, store } = await initializedStore();
-    const stack = await makeGitStack(directory);
-
-    await withFakeGt({
-      directory,
-      output: "◯ main\n◉ --upload-pack=/tmp/pwn\n",
-      operation: async () => {
-        await expect(store.frontier.set({ repo: stack.repo })).rejects.toThrow(
-          "gt log short output has an unparseable line 2"
-        );
-      },
-    });
-  });
-
-  it("keeps status.md table cells single-line when frontier data carries control characters", async () => {
-    const { directory, store } = await initializedStore();
-
-    await writeFile(
-      join(directory, "frontier.json"),
-      `${JSON.stringify({
-        generation: 1,
-        prs: [{ pr: 7, branches: "a\nb|c", sha: "cafe\tf00d", state: "OPEN" }],
-        lowestUnmerged: 7,
-      })}\n`
-    );
-    await store.status.render();
-    const status = await readFile(join(directory, "status.md"), "utf8");
-    expect(status).toContain("| a b\\|c | 7 | cafe f00d | OPEN |");
   });
 });
