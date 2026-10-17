@@ -1,6 +1,6 @@
 ---
 name: ketchup
-description: Catch up on recent work with evidence, screenshots, videos, and diagrams.
+description: Catch up on what changed in this chat with evidence, screenshots, videos, and diagrams.
 disable-model-invocation: true
 ---
 

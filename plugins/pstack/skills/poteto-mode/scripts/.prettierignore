@@ -10,7 +10,7 @@ orch/store.ts
 watch-pr/policy.test.ts
 watch-pr/types.compile.ts
 
-# Preserve upstream formatting for the newly synced shared fake reader.
+# Preserve upstream formatting in the shared fake reader updated by this sync.
 watch-pr/fakes.test-helper.ts
 
 # The check covers TypeScript. Upstream's check-plan.mjs uses tabs, and the

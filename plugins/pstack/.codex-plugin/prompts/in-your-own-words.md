@@ -1,6 +1,6 @@
 ---
 name: in-your-own-words
-description: Explain the current work in plain language.
+description: Restate the user's goals and problem in plain language.
 disable-model-invocation: true
 ---
 

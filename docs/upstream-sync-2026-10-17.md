@@ -32,7 +32,7 @@ The tenth pre-existing fork, `why/references/synthesizer-prompt.md`, merged clea
 
 The [Claude Code adapter](https://github.com/cursor/plugins/blob/101b274dd991f694e1f7024be2157e5f3adf07de/pstack/docs/harness/claude-code.md) says to omit `model` for non-Claude slugs. It also says `setup-pstack` has nothing to write and must stop. It prohibits putting role lines in `CLAUDE.md` or `AGENTS.md`. It keeps `disable-model-invocation`, so the adapter directs agents to read most skills by path instead of invoking them through the Skill tool. It skips Cursor-only cloud and automation steps instead of supplying the port's full local workflow adaptations.
 
-The owner's `/Users/boon/.claude-mulrken/pstack-models.md` selects gpt-6.1-sol at high effort for ordinary work, Opus for UI and hard judgment, and gpt-6-astra for review. It bans Fable and explains the Codex bridge for GPT models in Claude Code. The port's Models sections are generated defaults, not copies of this private sheet. `models.json` still includes Fable defaults for other installations. The owner's loaded override wins over those stamps. This sync leaves both the private sheet and default model policy unchanged.
+The owner uses a private model-routing override that the port supports across runtimes. The port's Models sections are generated defaults, not copies of private settings. The loaded override wins over those stamps. This sync leaves private settings and the default model policy unchanged.
 
 | Choice | Gain | Concrete loss or ongoing cost |
 | --- | --- | --- |
@@ -50,7 +50,7 @@ The vendored script suite passed all 69 tests, including upstream's fence tests 
 
 Copilot smoke skipped because the CLI is unavailable. The separate live Pi attempt used a throwaway configuration and the temporary Pi 1.0.0 binary. The provider returned HTTP 402 for insufficient credits, so the run was stopped and its child processes terminated. Live Pi behavior remains unverified. No owner plugin was reinstalled.
 
-The initial baseline did not complete before its tool timeout. Intermediate failures and corrections are recorded in [the run digest](../.audit/run-notes.md). Captured final excerpts are in [verification evidence](../.audit/verification.txt), and decisions are in [the audit trail](../.audit/upstream-sync.tsv).
+The initial baseline did not complete before its tool timeout. The owner keeps the run digest, captured verification output, and decision trail outside the repository.
 
 ## Attention
 

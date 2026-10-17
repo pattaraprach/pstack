@@ -1,6 +1,24 @@
 {
   "substitutions": [
     {
+      "files": "^agents/poteto-agent\\.md$",
+      "pattern": "With no path, before any other work, search `~/.cursor/plugins/` for a file whose path ends in `skills/poteto-mode/SKILL.md`. If more than one file matches, use the copy whose `.cursor-plugin/plugin.json` has the highest `version`. Your skill catalog hides this skill, so a missing catalog entry does not mean pstack is absent.",
+      "replacement": "With no path, before any other work, locate the active runtime's installed pstack root and its `skills/poteto-mode/SKILL.md`. On Claude Code, search `~/.claude/plugins/`; if several copies match, compare their `.claude-plugin/plugin.json` versions and use the highest. On Pi, use the package path reported by `pi list`. On Copilot, use the plugin path supplied by the harness, expanding `${COPILOT_PLUGIN_ROOT}` through `bash` when needed. On Codex, use the absolute skill path in the session's skill catalog. A missing catalog entry does not mean pstack is absent; check the installed plugin or package before stopping.",
+      "rationale": "Delegates share this agent body across runtimes; each must locate its own installation, and Claude Code versions live in its shipped manifest."
+    },
+    {
+      "files": "^skills/poteto-mode/playbooks/worktree-cleanup\\.md$",
+      "pattern": "run `scripts/worktree-audit.sh [-b <pr-base-ref>] [repo-path]` (principle-build-the-lever). Without `-b` it checks `MERGED` against `origin/HEAD`, so pass `-b origin/<branch>` when PRs target another branch.",
+      "replacement": "run `node <installed-plugin>/skills/poteto-mode/scripts/worktree-audit.mjs [repo-path]` with the absolute installed plugin path (principle-build-the-lever). It checks `MERGED` against the default branch advertised by origin, falling back to `main`. For PRs targeting another branch, verify ancestry against that base separately before pruning, because this script has no base override.",
+      "rationale": "The port ships a Node audit script without upstream's -b option, so cleanup must use its actual command and base semantics."
+    },
+    {
+      "files": "^skills/why/SKILL\\.md$",
+      "pattern": "Every spawn is `generalPurpose` with `readonly: false` (agent mode). **Do not use readonly/Ask mode.** It strips MCP access, which disables the MCP-backed investigators and the synthesizer's citation spot-checks.",
+      "replacement": "Every spawn uses `general-purpose`, unless a reasoning level selects an effort agent per poteto-mode's Reasoning effort section, with full tool access for the MCP-backed investigators and the synthesizer's citation spot-checks.",
+      "rationale": "Claude Code reasoning effort selects a shipped effort agent rather than Cursor's generalPurpose agent-mode parameter."
+    },
+    {
       "pattern": "Each tick re-reads this playbook from trunk",
       "replacement": "Each tick re-reads this playbook from the installed plugin",
       "rationale": "A consuming repository trunk does not contain the installed plugin playbooks."

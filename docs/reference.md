@@ -11,9 +11,9 @@ Find each skill's instructions in the [skills tree](../plugins/pstack/skills/).
 | command | use it when |
 | --- | --- |
 | `/poteto-mode` | default entry point for any non-trivial task |
-| `/ketchup` | Catch up on recent work with evidence, screenshots, videos, and diagrams. |
+| `/ketchup` | Catch up on what changed in this chat with evidence, screenshots, videos, and diagrams. |
 | `/sharpen` | Improve an ambiguous prompt before acting on it. |
-| `/in-your-own-words` | Explain the current work in plain language. |
+| `/in-your-own-words` | Restate the user's goals and problem in plain language. |
 | `/how` | walk through how a subsystem works |
 | `/why` | investigate why something was built this way (parallel multi-MCP evidence) |
 | `/architect` | settle types and module shape before writing code that crosses a function boundary |
