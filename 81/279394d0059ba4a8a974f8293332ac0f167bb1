@@ -1,0 +1,62 @@
+tools/substitutions.json
+  s_7655effb8c9289::t_796bc2cd69d695 3-4,7-20
+  s_7655effb8c9289::t_af850225cd92c5 5-6
+docs/reference.md
+  s_7655effb8c9289::t_796bc2cd69d695 14,16
+CHANGES.md
+  s_7655effb8c9289::t_af850225cd92c5 11-12
+plugins/pstack/skills/poteto-mode/playbooks/worktree-cleanup.md
+  s_7655effb8c9289::t_21ad8d350fa943 3
+plugins/pstack/skills/poteto-mode/references/pi-tools.md
+  s_7655effb8c9289::t_21ad8d350fa943 109
+plugins/pstack/skills/why/SKILL.md
+  s_7655effb8c9289::t_21ad8d350fa943 16
+docs/upstream-sync-2026-10-17.md
+  s_7655effb8c9289::t_ae34ead1f4a396 35,53
+plugins/pstack/skills/poteto-mode/references/codex-tools.md
+  s_7655effb8c9289::t_796bc2cd69d695 95
+plugins/pstack/skills/poteto-mode/references/copilot-tools.md
+  s_7655effb8c9289::t_21ad8d350fa943 131
+plugins/pstack/skills/poteto-mode/scripts/.prettierignore
+  s_7655effb8c9289::t_796bc2cd69d695 13
+plugins/pstack/agents/poteto-agent.md
+  s_7655effb8c9289::t_af850225cd92c5 8
+plugins/pstack/.codex-plugin/prompts/in-your-own-words.md
+  s_7655effb8c9289::t_66585b23a2d8c4 3
+plugins/pstack/.codex-plugin/prompts/ketchup.md
+  s_7655effb8c9289::t_9cfd1e596bf46b 3
+plugins/pstack/effort-agents/poteto-agent-high.md
+  s_7b5f9f017c48f0::t_b5a258ad73cb66 9
+plugins/pstack/effort-agents/poteto-agent-low.md
+  s_7b5f9f017c48f0::t_ff6825d9f66b52 9
+plugins/pstack/effort-agents/poteto-agent-max.md
+  s_7b5f9f017c48f0::t_16ceee66169cde 9
+plugins/pstack/effort-agents/poteto-agent-medium.md
+  s_7b5f9f017c48f0::t_6c91958c7a0ad6 9
+plugins/pstack/effort-agents/poteto-agent-xhigh.md
+  s_7b5f9f017c48f0::t_099149d127d057 9
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.7.5",
+  "base_commit_sha": "81279394d0059ba4a8a974f8293332ac0f167bb1",
+  "prompts": {},
+  "sessions": {
+    "s_7655effb8c9289": {
+      "agent_id": {
+        "tool": "codex",
+        "id": "01a148c8-1b80-73e0-8537-6479e43666d2",
+        "model": "gpt-6.1-sol"
+      },
+      "human_author": "pattara <pattaraprach@gmail.com>"
+    },
+    "s_7b5f9f017c48f0": {
+      "agent_id": {
+        "tool": "codex",
+        "id": "01a13b63-3351-7e33-b31d-f1d758b00482",
+        "model": "gpt-6.1-sol"
+      },
+      "human_author": "pattara <pattaraprach@gmail.com>"
+    }
+  }
+}
