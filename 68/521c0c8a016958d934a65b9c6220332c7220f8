@@ -1,0 +1,49 @@
+tools/substitutions.json
+  s_71a02f003c61e8::t_6d631362569f14 6-7
+tests/sync.test.mjs
+  s_71a02f003c61e8::t_56b85eaad689c5 55-81
+CHANGES.md
+  s_71a02f003c61e8::t_6d631362569f14 11
+plugins/pstack/skills/poteto-mode/references/codex-tools.md
+  s_71a02f003c61e8::t_6d631362569f14 95
+plugins/pstack/skills/poteto-mode/references/pi-tools.md
+  s_71a02f003c61e8::t_6d631362569f14 109
+plugins/pstack/agents/poteto-agent.md
+  s_71a02f003c61e8::t_6d631362569f14 8
+plugins/pstack/skills/poteto-mode/references/copilot-tools.md
+  s_71a02f003c61e8::t_6d631362569f14 131
+plugins/pstack/effort-agents/poteto-agent-high.md
+  s_4e7a51b3a89073::t_b3d86f319b4003 9
+plugins/pstack/effort-agents/poteto-agent-low.md
+  s_4e7a51b3a89073::t_2294a92571f2a2 9
+plugins/pstack/effort-agents/poteto-agent-max.md
+  s_4e7a51b3a89073::t_fe88ea3a488033 9
+plugins/pstack/effort-agents/poteto-agent-medium.md
+  s_4e7a51b3a89073::t_7a63ab466d0955 9
+plugins/pstack/effort-agents/poteto-agent-xhigh.md
+  s_4e7a51b3a89073::t_e4ae0bde305d09 9
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.7.5",
+  "base_commit_sha": "68521c0c8a016958d934a65b9c6220332c7220f8",
+  "prompts": {},
+  "sessions": {
+    "s_4e7a51b3a89073": {
+      "agent_id": {
+        "tool": "codex",
+        "id": "01a148d2-7e7f-7152-a07c-6768b8b27021",
+        "model": "gpt-6-sol"
+      },
+      "human_author": "pattara <pattaraprach@gmail.com>"
+    },
+    "s_71a02f003c61e8": {
+      "agent_id": {
+        "tool": "codex",
+        "id": "01a148d3-6941-75c0-94ef-e7a3ac243f7f",
+        "model": "gpt-6.1-sol"
+      },
+      "human_author": "pattara <pattaraprach@gmail.com>"
+    }
+  }
+}
