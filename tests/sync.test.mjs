@@ -52,6 +52,33 @@ function sync(overrides) {
 }
 
 describe("applySubstitutions", () => {
+  test.each([
+    ["default home", {}, `${process.env.HOME}/.claude/plugins`],
+    ["config override", { CLAUDE_CONFIG_DIR: "/tmp/claude profile" }, "/tmp/claude profile/plugins"],
+    ["plugin override", { CLAUDE_CODE_PLUGIN_CACHE_DIR: "/tmp/plugin cache" }, "/tmp/plugin cache"],
+    [
+      "plugin override wins",
+      { CLAUDE_CONFIG_DIR: "/tmp/claude profile", CLAUDE_CODE_PLUGIN_CACHE_DIR: "/tmp/plugin cache" },
+      "/tmp/plugin cache",
+    ],
+    ["empty plugin override", { CLAUDE_CONFIG_DIR: "/tmp/claude profile", CLAUDE_CODE_PLUGIN_CACHE_DIR: "" }, "/tmp/claude profile/plugins"],
+    ["empty overrides", { CLAUDE_CONFIG_DIR: "", CLAUDE_CODE_PLUGIN_CACHE_DIR: "" }, `${process.env.HOME}/.claude/plugins`],
+  ])("delegate lookup resolves the %s through bash", (_label, overrides, expected) => {
+    const upstream = "With no path, before any other work, search `~/.cursor/plugins/` for a file whose path ends in `skills/poteto-mode/SKILL.md`. If more than one file matches, use the copy whose `.cursor-plugin/plugin.json` has the highest `version`. Your skill catalog hides this skill, so a missing catalog entry does not mean pstack is absent.";
+    const { text } = applySubstitutions(upstream, RULES.substitutions, "agents/poteto-agent.md");
+    const expression = text.match(/On Claude Code, resolve `([^`]+)` through `bash`/)?.[1];
+    expect(expression).toBeDefined();
+    const env = { ...process.env };
+    delete env.CLAUDE_CONFIG_DIR;
+    delete env.CLAUDE_CODE_PLUGIN_CACHE_DIR;
+    const result = spawnSync("bash", ["--noprofile", "--norc", "-c", `printf '%s' "${expression}"`], {
+      env: { ...env, ...overrides },
+      encoding: "utf8",
+    });
+    expect(result.status).toBe(0);
+    expect(result.stdout).toBe(expected);
+  });
+
   test("rewrites Cursor primitives and counts per rule", () => {
     const { text, counts } = applySubstitutions(
       "Use the `Task` tool, then AskQuestion. Skills live in .cursor/skills/.",

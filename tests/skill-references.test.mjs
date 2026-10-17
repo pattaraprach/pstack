@@ -43,7 +43,10 @@ describe("prose skill references", () => {
 
   test("poteto-mode's Principles index lists exactly the principle leaves", () => {
     const index = readFileSync(join(skillsDir, "poteto-mode/SKILL.md"), "utf8");
-    const listed = new Set([...index.matchAll(/\(\*\*(principle-[a-z0-9-]+)\*\*\)/g)].map((m) => m[1]));
+    const section = index.split("## Principles\n")[1].split("\n## ")[0];
+    const listed = new Set([...section.matchAll(/^- \*\*(.+?)\*\*(?: \(\*\*(principle-[a-z0-9-]+)\*\*\))?/gm)].map((m) =>
+      m[2] ?? `principle-${m[1].toLowerCase().replace(/[^a-z0-9 -]/g, "").replaceAll(" ", "-")}`,
+    ));
     expect([...listed].sort()).toEqual([...principles].sort());
   });
 });

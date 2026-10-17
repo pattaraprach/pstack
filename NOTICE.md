@@ -21,6 +21,7 @@ This plugin is a port of upstream MIT-licensed work. The port's modifications an
 | `plugins/pstack/skills/benchmark-checklist/`, `plugins/pstack/skills/principle-explain-the-number/` (v0.15.6 additions) | [cursor/plugins/pstack @ 23e4138](https://github.com/cursor/plugins/tree/23e4138/pstack) | (c) 2026 Lauren Tan | MIT | [LICENSE](LICENSE) |
 | `plugins/pstack/skills/correct/` (v0.15.9 addition) | [cursor/plugins/pstack @ e43c7ee](https://github.com/cursor/plugins/tree/e43c7ee/pstack) | (c) 2026 Lauren Tan | MIT | [LICENSE](LICENSE) |
 | `plugins/pstack/skills/poteto-help/` (v0.15.13 addition) | [cursor/plugins/pstack @ 2cbf585](https://github.com/cursor/plugins/tree/2cbf585/pstack) | (c) 2026 Lauren Tan | MIT | [LICENSE](LICENSE) |
+| `plugins/pstack/skills/{ketchup,sharpen,in-your-own-words}/`, `plugins/pstack/skills/poteto-mode/scripts/check-plan.test.ts` (v0.15.25 additions) | [cursor/plugins/pstack @ 101b274](https://github.com/cursor/plugins/tree/101b274dd991f694e1f7024be2157e5f3adf07de/pstack) | (c) 2026 Lauren Tan | MIT | [LICENSE](LICENSE) |
 
 ## What changed in the port
 

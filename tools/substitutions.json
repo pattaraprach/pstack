@@ -1,6 +1,113 @@
 {
   "substitutions": [
     {
+      "files": "^agents/poteto-agent\\.md$",
+      "pattern": "With no path, before any other work, search `~/.cursor/plugins/` for a file whose path ends in `skills/poteto-mode/SKILL.md`. If more than one file matches, use the copy whose `.cursor-plugin/plugin.json` has the highest `version`. Your skill catalog hides this skill, so a missing catalog entry does not mean pstack is absent.",
+      "replacement": "With no path, before any other work, locate the active runtime's installed pstack root and its `skills/poteto-mode/SKILL.md`. On Claude Code, resolve `${CLAUDE_CODE_PLUGIN_CACHE_DIR:-${CLAUDE_CONFIG_DIR:-$HOME/.claude}/plugins}` through `bash` and search that plugin root; if several copies match, compare their `.claude-plugin/plugin.json` versions and use the highest. On Pi, use the package path reported by `pi list`. On Copilot, use the plugin path supplied by the harness, expanding `${COPILOT_PLUGIN_ROOT}` through `bash` when needed. On Codex, use the absolute skill path in the session's skill catalog. A missing catalog entry does not mean pstack is absent; check the installed plugin or package before stopping.",
+      "rationale": "Delegates share this agent body across runtimes; each must locate its own installation, honoring Claude Code's plugin-root and config-directory overrides before reading its shipped manifest."
+    },
+    {
+      "files": "^skills/poteto-mode/playbooks/worktree-cleanup\\.md$",
+      "pattern": "run `scripts/worktree-audit.sh [-b <pr-base-ref>] [repo-path]` (principle-build-the-lever). Without `-b` it checks `MERGED` against `origin/HEAD`, so pass `-b origin/<branch>` when PRs target another branch.",
+      "replacement": "run `node <installed-plugin>/skills/poteto-mode/scripts/worktree-audit.mjs [repo-path]` with the absolute installed plugin path (principle-build-the-lever). It checks `MERGED` against the default branch advertised by origin, falling back to `main`. For PRs targeting another branch, verify ancestry against that base separately before pruning, because this script has no base override.",
+      "rationale": "The port ships a Node audit script without upstream's -b option, so cleanup must use its actual command and base semantics."
+    },
+    {
+      "files": "^skills/why/SKILL\\.md$",
+      "pattern": "Every spawn is `generalPurpose` with `readonly: false` (agent mode). **Do not use readonly/Ask mode.** It strips MCP access, which disables the MCP-backed investigators and the synthesizer's citation spot-checks.",
+      "replacement": "Every spawn uses `general-purpose`, unless a reasoning level selects an effort agent per poteto-mode's Reasoning effort section, with full tool access for the MCP-backed investigators and the synthesizer's citation spot-checks.",
+      "rationale": "Claude Code reasoning effort selects a shipped effort agent rather than Cursor's generalPurpose agent-mode parameter."
+    },
+    {
+      "pattern": "Each tick re-reads this playbook from trunk",
+      "replacement": "Each tick re-reads this playbook from the installed plugin",
+      "rationale": "A consuming repository trunk does not contain the installed plugin playbooks."
+    },
+    {
+      "pattern": "Each tick re-reads both playbooks from trunk",
+      "replacement": "Each tick re-reads both playbooks from the installed plugin",
+      "rationale": "Autopilot-stack and autopilot-full are read from the same installed plugin version."
+    },
+    {
+      "pattern": "the root agent's store (path in the system prompt)",
+      "replacement": "the shared task store at `~/.claude/orchestrate/<slug>/`, whose absolute path the root includes in every brief",
+      "rationale": "Claude Code has no system-prompt agent store; use the same explicit local store as the orchestration playbooks."
+    },
+    {
+      "pattern": "Assume the VM dies.",
+      "replacement": "Assume the session ends unexpectedly.",
+      "rationale": "Claude Code workers run locally; durable evidence must survive a session ending."
+    },
+    {
+      "files": "^skills/poteto-mode/SKILL\\.md$",
+      "regex": "\\*\\*Match the model to the job\\.\\*\\*[^\\n]+",
+      "replacement": "**Match the model to the job.** Before each spawn, start from the role's model and reasoning effort in the override sheet, or the defaults in [Models](#models) and [Reasoning effort](#reasoning-effort). Raise effort one step, up to max, for the hardest or subtlest work. Lower it one step for judgment and two or more steps for routine work. Verification keeps the configured `swarm workers` model and effort. Keep the model family so a diverse panel stays diverse. A fixed model, effort, or speed policy in the user's instructions takes precedence. On Claude Code, select effort through the effort agent described below, never by appending an effort or `-fast` suffix to the model name. Use a faster speed only when the runtime offers it and the job is urgent, meaning CI or trunk is red or a person is blocked on the result. Otherwise use standard speed. A role on `auto` or `inherit-parent` stays on the parent model. If the tool rejects the adjusted setting, use the role's configured setting or default and say so.",
+      "rationale": "Runtime effort is separate from Claude model aliases and the retained setup sheet has no Cursor budget or effort-suffixed slugs; preserve upstream effort selection through runtime mechanisms."
+    },
+    {
+      "pattern": "a chart or diagram from `/visualize`",
+      "replacement": "a chart or diagram from an available visualization tool",
+      "rationale": "The Cursor visualization skill is not shipped by this port; use the current runtime visualization tool."
+    },
+    {
+      "pattern": "a `/visualize` chart for numbers",
+      "replacement": "a chart from an available visualization tool for numbers",
+      "rationale": "The current runtime supplies charts rather than a bundled Cursor visualize skill."
+    },
+    {
+      "pattern": "subagent_type: \"comment-sicko\"",
+      "replacement": "subagent_type: \"pstack:comment-sicko\"",
+      "rationale": "Plugin agents register under the pstack namespace; upstream now names the bare agent without the Task phrase."
+    },
+    {
+      "regex": "Families go by prefix: [^\\n]+?\\. A refused `composer-\\*` entry runs on (?:`[^`]+`|Reviewer B's default)\\.",
+      "replacement": "Families go by model name, such as Opus, Fable, or Sonnet.",
+      "rationale": "Claude Code dispatches available model families rather than Cursor vendor slugs."
+    },
+    {
+      "pattern": "Each owner is a Cursor cloud agent that builds",
+      "replacement": "Each owner is a background subagent in its own worktree that builds",
+      "rationale": "Claude Code runs PR owners locally with a worktree for isolation."
+    },
+    {
+      "pattern": "the full Task schema including `environment`",
+      "replacement": "the full `Agent` schema",
+      "rationale": "Claude Code has no agent environment field."
+    },
+    {
+      "pattern": "Always `environment: \"cloud\"` unless the task needs this machine: `control-ui` or `control-cli` runtime verification (from `cursor-team-kit`). Reading local transcripts under `agent-transcripts/`. Simulators and local IDE state. Auth that exists only here. Cloud agents cannot read the local store, so their briefs inline what they need or point at repo paths.",
+      "replacement": "Always on this machine, with runtime verification through the driver skill resolved in poteto-mode. Briefs inline what workers need or point at repo paths.",
+      "rationale": "Claude Code workers and verifiers run locally rather than in Cursor cloud environments."
+    },
+    {
+      "pattern": "the `agent-transcripts/` directory the system prompt names",
+      "replacement": "Claude Code's per-project transcripts directory at `~/.claude/projects/<encoded-cwd>/`",
+      "rationale": "Claude Code transcripts live in the project directory rather than Cursor agent-transcripts."
+    },
+    {
+      "pattern": "(`grok-4.7-xhigh-fast` by default)",
+      "replacement": "(default in [Models](#models))",
+      "rationale": "The verification worker model comes from the stamped role defaults, not a Cursor slug."
+    },
+    {
+      "files": "^skills/reflect/SKILL\\.md$",
+      "regex": "\\| Default `model` (?=\\|)|\\| `(?:claude|gpt|grok|gemini|composer)-[^`]+` (?=\\|)",
+      "replacement": "",
+      "rationale": "Reflect uses the stamped Models section rather than an inline Cursor model column."
+    },
+    {
+      "files": "^skills/reflect/SKILL\\.md$",
+      "pattern": "|---|---|---|---|",
+      "replacement": "|---|---|---|",
+      "rationale": "Reflect has no inline default-model column after portable model derivation."
+    },
+    {
+      "files": "^skills/setup-pstack/SKILL\\.md$",
+      "regex": "(?:claude|grok)-[0-9a-z.-]+-(?:max|xhigh|high|medium|low)(?:-fast)?",
+      "replacement": "runtime-model",
+      "rationale": "Cursor budget examples use effort-suffixed slugs; the retained runtime setup fork supplies validated models and effort separately."
+    },
+    {
       "pattern": "read `hardest tasks`",
       "replacement": "read `strongest judgment`",
       "rationale": "the retained setup sheet calls the strongest-model role strongest judgment"
@@ -100,13 +207,13 @@
       "rationale": "where Claude Code exposes its MCP servers"
     },
     {
-      "regex": "default to one each on `(?:claude|gpt|grok|gemini|composer)-[^`]+`, `(?:claude|gpt|grok|gemini|composer)-[^`]+`, `(?:claude|gpt|grok|gemini|composer)-[^`]+`\\.",
+      "regex": "default to one each on `(?:claude|gpt|grok|gemini|composer)-[^`]+`(?:, `(?:claude|gpt|grok|gemini|composer)-[^`]+`| and `(?:claude|gpt|grok|gemini|composer)-[^`]+`)+\\.",
       "files": "^skills/arena/SKILL\\.md$",
       "replacement": "run one each on the defaults in [Models](#models).",
       "rationale": "the runner defaults are stamped into the Models section"
     },
     {
-      "regex": "choose from `(?:claude|gpt|grok|gemini|composer)-[^`]+`, `(?:claude|gpt|grok|gemini|composer)-[^`]+`, `(?:claude|gpt|grok|gemini|composer)-[^`]+`\\.",
+      "regex": "choose from `(?:claude|gpt|grok|gemini|composer)-[^`]+`(?:, `(?:claude|gpt|grok|gemini|composer)-[^`]+`| and `(?:claude|gpt|grok|gemini|composer)-[^`]+`)+\\.",
       "files": "^skills/arena/SKILL\\.md$",
       "replacement": "choose from the runner defaults in [Models](#models).",
       "rationale": "the cross-judge pool defaults to the stamped runners"
@@ -118,7 +225,7 @@
       "rationale": "the fallback model is the stamped single-role default"
     },
     {
-      "regex": "use `(?:claude|gpt|grok|gemini|composer)-[^`]+`, `(?:claude|gpt|grok|gemini|composer)-[^`]+`, `(?:claude|gpt|grok|gemini|composer)-[^`]+`\\.",
+      "regex": "use `(?:claude|gpt|grok|gemini|composer)-[^`]+`(?:, `(?:claude|gpt|grok|gemini|composer)-[^`]+`| and `(?:claude|gpt|grok|gemini|composer)-[^`]+`)+\\.",
       "files": "^skills/architect/SKILL\\.md$",
       "replacement": "use the defaults in [Models](#models).",
       "rationale": "the runner defaults are stamped into the Models section"

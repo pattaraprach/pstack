@@ -1,5 +1,15 @@
 # CHANGES
 
+## 0.9.75 - Sync official PStack v0.15.25
+
+Sync official PStack v0.15.25 at `101b274dd991f694e1f7024be2157e5f3adf07de`, from `2cbf585`. Import ketchup, sharpen, in-your-own-words, workflow updates, principle rewrites, and the forge-based orchestration scripts. Keep the port's Claude Code, Codex, Pi, and Copilot runtime adaptations.
+
+Resolve nine declared fork conflicts. Keep the portable platform preamble and checklist, verification skill name, local worker isolation and store paths, transcript finder, runtime model-sheet setup, and full-tree script typecheck. Adopt upstream's feature precondition rule, full-swarm reuse policy, and forge-based frontier while retaining the port's plan skeleton checks, BOM handling, and support for fences indented inside list items. The URL-template fork merges cleanly. No files become port-only in this sync.
+
+Keep generator fixture copies clear of the CodeGraph daemon socket. Extend substitutions for two-model panels, runtime-specific model examples, local workers, shared stores, installed-playbook reads, and transcript paths. Adapt upstream fence tests to the port plan skeleton and recognize the new implicit principle index in reference checks. Register the new public skills and regenerate all manifests, menus, model stamps, and portable assets at 0.9.75. Advance cursor-team-kit to the same upstream revision with its seven carried files unchanged. Exclude upstream plugin.json because the port generator owns runtime manifests. The upstream generated Claude tree lives outside the synced pstack component and is not imported.
+
+Review corrections fix delegate installation lookup and the Claude Code manifest used for version selection, cleanup's Node command and supported arguments, forge dependencies in each runtime mapping, and why's effort-agent dispatch wording. Correct the new menu descriptions and attribution row. Keep the shared fake reader's upstream formatting under an accurately described Prettier exclusion. Private routing settings and sync audit files stay outside the repository. Findings inherited verbatim from upstream remain upstream-owned. Delegate lookup honors Claude Code plugin-root and config-directory overrides. The runtime mappings supply store initialization and the repository path for the Origin example.
+
 This file is the release changelog, with one `## <version> - <title>` entry per release, newest first. The Cursor-to-Claude rewrite rules live in [`tools/substitutions.json`](tools/substitutions.json), and the [sync boundary](CONTRIBUTING.md#the-sync-boundary) in `CONTRIBUTING.md` defines how a change to upstream's skill content is declared.
 
 ## 0.9.74 - restore official PStack behavior
