@@ -1,0 +1,261 @@
+.audit/run-notes.md
+  s_f6084abc764237::t_50fee11f05e712 1-13
+.audit/upstream-sync.tsv
+  s_f6084abc764237::t_dd035f349033af 1-12
+.audit/verification.txt
+  s_f6084abc764237::t_2936ae72cda2f0 1-56
+.claude-plugin/marketplace.json
+  s_7b5f9f017c48f0::t_f1345359f4fa35 13
+CHANGES.md
+  s_f6084abc764237::t_f3dbc94e9ecc36 3-10
+NOTICE.md
+  s_f6084abc764237::t_026cf111f1dd15 25-26
+VERSION
+  s_796194c47608d8::t_b184f2bc6e3f4c 1
+docs/reference.md
+  s_912a50df6b9787::t_10050b6decef06 7,14-16,237
+docs/upstream-sync-2026-10-17.md
+  s_f6084abc764237::t_efe109eda7c07b 1-57
+package.json
+  s_7b5f9f017c48f0::t_5875180b9fff82 4
+plugins/pstack/.claude-plugin/plugin.json
+  s_7b5f9f017c48f0::t_3afe2160f79ae2 4
+plugins/pstack/.codex-plugin/plugin.json
+  s_7b5f9f017c48f0::t_dfa2380f5cfa70 3
+plugins/pstack/.codex-plugin/prompts/in-your-own-words.md
+  s_7b5f9f017c48f0::t_dc856e53815082 1-7
+plugins/pstack/.codex-plugin/prompts/ketchup.md
+  s_7b5f9f017c48f0::t_60debbbf6a3aab 1-7
+plugins/pstack/.codex-plugin/prompts/sharpen.md
+  s_7b5f9f017c48f0::t_d858f71381818d 1-7
+plugins/pstack/.github/plugin/plugin.json
+  s_7b5f9f017c48f0::t_0de74a2b7817db 4
+plugins/pstack/agents/poteto-agent.md
+  s_7b5f9f017c48f0::t_d53203d8aa8b55 3,8
+plugins/pstack/effort-agents/poteto-agent-high.md
+  s_7b5f9f017c48f0::t_c481ede8cac5e5 9
+plugins/pstack/effort-agents/poteto-agent-low.md
+  s_7b5f9f017c48f0::t_27668239ff49fc 9
+plugins/pstack/effort-agents/poteto-agent-max.md
+  s_7b5f9f017c48f0::t_11251f6861edc0 9
+plugins/pstack/effort-agents/poteto-agent-medium.md
+  s_7b5f9f017c48f0::t_80cbc573b6881d 9
+plugins/pstack/effort-agents/poteto-agent-xhigh.md
+  s_7b5f9f017c48f0::t_6b0d4c8eb50983 9
+plugins/pstack/skills/architect/SKILL.md
+  s_7b5f9f017c48f0::t_0611d4e8bf88ef 12,26,32,42,56
+plugins/pstack/skills/architect/references/runner-prompt.md
+  s_7b5f9f017c48f0::t_ce554d3c41807b 20
+plugins/pstack/skills/arena/SKILL.md
+  s_7b5f9f017c48f0::t_6c5d9b61aa9076 12,16,19-21,25,27,31,35,37,41,43,47,51
+plugins/pstack/skills/automate-me/SKILL.md
+  s_7b5f9f017c48f0::t_cffdeeb6cf0592 34
+plugins/pstack/skills/benchmark-checklist/SKILL.md
+  s_7b5f9f017c48f0::t_e3d41b2c08e006 8,15,20-26,33,35,37-38
+plugins/pstack/skills/blast-radius/SKILL.md
+  s_7b5f9f017c48f0::t_a0237a24b3940a 37
+plugins/pstack/skills/correct/SKILL.md
+  s_7b5f9f017c48f0::t_62146c0e46e43c 20
+plugins/pstack/skills/create-verification-skill/SKILL.md
+  s_796194c47608d8::t_ceae98c0d9323a 30,39,43
+plugins/pstack/skills/figure-it-out/SKILL.md
+  s_7b5f9f017c48f0::t_b1d863b4f86e84 3,30,33,37
+plugins/pstack/skills/how/SKILL.md
+  s_7b5f9f017c48f0::t_3b4976761b16b2 14,16,20-21,25,27,29,31,33,35,37
+plugins/pstack/skills/in-your-own-words/SKILL.md
+  s_7b5f9f017c48f0::t_60df8ec93c6383 1-6
+plugins/pstack/skills/interrogate/SKILL.md
+  s_7b5f9f017c48f0::t_4acaae3033554c 12,14,18-20,22,24,26,30,38,40,42,46,50,52-55,66,69,72,75,78
+plugins/pstack/skills/interrogate/references/reviewer-prompt.md
+  s_7b5f9f017c48f0::t_9ca77b77f0bbe1 15,41,43,45,49
+plugins/pstack/skills/interrogate/references/rubric.md
+  s_7b5f9f017c48f0::t_377c092481b228 3,13-14,23,28,39-40,68
+plugins/pstack/skills/ketchup/SKILL.md
+  s_912a50df6b9787::t_fef5dc60e34335 1-36
+plugins/pstack/skills/no-comments/SKILL.md
+  s_f6084abc764237::t_fd3e50c329e5f1 22
+plugins/pstack/skills/poteto-help/SKILL.md
+  s_796194c47608d8::t_ae20cd57306f5e 29-33,57-58,63,68,94
+plugins/pstack/skills/poteto-help/references/recipes.md
+  s_7b5f9f017c48f0::t_c70e3fb7078dd7 8-9
+plugins/pstack/skills/poteto-mode/SKILL.md
+  s_7b5f9f017c48f0::t_d361b970dc0099 14-15,23,29,35,43,47-56,60-65,69-70,72-73,77-78,82,96,100-101,118,126,130-152
+plugins/pstack/skills/poteto-mode/playbooks/autonomous-run.md
+  s_7b5f9f017c48f0::t_90944005000539 6
+plugins/pstack/skills/poteto-mode/playbooks/autopilot-full.md
+  s_7b5f9f017c48f0::t_2ab2e790658c4e 5,7,9-27
+plugins/pstack/skills/poteto-mode/playbooks/autopilot-stack.md
+  s_7b5f9f017c48f0::t_988515d63e7d1e 3,5-8,12
+plugins/pstack/skills/poteto-mode/playbooks/bug-fix.md
+  s_7b5f9f017c48f0::t_bc2cfdb41e5cf7 3
+plugins/pstack/skills/poteto-mode/playbooks/eval.md
+  s_7b5f9f017c48f0::t_3dfe929825ffaf 20
+plugins/pstack/skills/poteto-mode/playbooks/feature.md
+  s_7b5f9f017c48f0::t_86d5323875ec76 12
+plugins/pstack/skills/poteto-mode/playbooks/hillclimb.md
+  s_7b5f9f017c48f0::t_e74d501c8b1af6 12
+plugins/pstack/skills/poteto-mode/playbooks/multi-phase-plan.md
+  s_796194c47608d8::t_b62686ce1c1d27 9,68-69
+plugins/pstack/skills/poteto-mode/playbooks/opening-a-pr.md
+  s_7b5f9f017c48f0::t_7379aade1520a9 7,9,11,13,15-20,22,26,28,32,34
+plugins/pstack/skills/poteto-mode/playbooks/orchestrate.md
+  s_796194c47608d8::t_4a02343cbfd4cb 17,48-49,64,82-84,110
+plugins/pstack/skills/poteto-mode/playbooks/perf-issue.md
+  s_7b5f9f017c48f0::t_97bf581981fd8a 17
+plugins/pstack/skills/poteto-mode/playbooks/refactoring.md
+  s_7b5f9f017c48f0::t_3cb303ec3ed96e 13
+plugins/pstack/skills/poteto-mode/playbooks/runtime-forensics.md
+  s_7b5f9f017c48f0::t_bd5d38c3445871 6
+plugins/pstack/skills/poteto-mode/playbooks/session-pickup.md
+  s_7b5f9f017c48f0::t_d3df59dfdfb69a 5
+plugins/pstack/skills/poteto-mode/playbooks/shipping.md
+  s_7b5f9f017c48f0::t_bb1995ec5311aa 5,7-12,14
+plugins/pstack/skills/poteto-mode/playbooks/trace-forensics.md
+  s_7b5f9f017c48f0::t_f317bcb46b365c 3,5,7,11
+plugins/pstack/skills/poteto-mode/playbooks/worktree-cleanup.md
+  s_7b5f9f017c48f0::t_d4f3350002b094 3,5
+plugins/pstack/skills/poteto-mode/references/codex-tools.md
+  s_7b5f9f017c48f0::t_4aabc79cbec360 95
+plugins/pstack/skills/poteto-mode/references/copilot-tools.md
+  s_7b5f9f017c48f0::t_4117246a32773a 131
+plugins/pstack/skills/poteto-mode/references/pi-tools.md
+  s_7b5f9f017c48f0::t_55b944b670cb39 109
+plugins/pstack/skills/poteto-mode/scripts/.prettierignore
+  s_f6084abc764237::t_b34e5dae6b5a52 13-15
+plugins/pstack/skills/poteto-mode/scripts/check-plan.test.ts
+  s_f6084abc764237::t_e2f8d6a199dd08 1-110
+plugins/pstack/skills/poteto-mode/scripts/orch/orch.test.ts
+  s_7b5f9f017c48f0::t_2f413a2c4df914 19,80,91-96,103,110,114-162,164,166,169-171,174-193,195,199,203,206-210,212-221,223-224,227,233,238,371,495-548,550-551,553-573,576-595,599,601-602,604-605,664,671-683
+plugins/pstack/skills/poteto-mode/scripts/orch/orch.ts
+  s_7b5f9f017c48f0::t_a2b2ab9da453f9 10,85,477,479-483,490-494,507
+plugins/pstack/skills/poteto-mode/scripts/orch/store.ts
+  s_7b5f9f017c48f0::t_f8f5b7b75250ea 170,971-1010,1013-1017,1020-1023,1025-1036,1038,1043-1078,1080-1081,1083-1103,1106,1108,1112,1114-1117,1119,1124,1127,1130-1151,1161,1168-1233,1256,1259,1263,1556,1565
+plugins/pstack/skills/poteto-mode/scripts/package.json
+  s_796194c47608d8::t_b9330e1fc89dd0 6
+plugins/pstack/skills/poteto-mode/scripts/watch-pr/fakes.test-helper.ts
+  s_7b5f9f017c48f0::t_e7a9753bb1ffe9 10,12,22,29-32,88,117-122
+plugins/pstack/skills/poteto-mode/scripts/watch-pr/github.test.ts
+  s_7b5f9f017c48f0::t_99f0542f80037d 5,8,10,13,125-155,235,288,294-388
+plugins/pstack/skills/poteto-mode/scripts/watch-pr/github.ts
+  s_7b5f9f017c48f0::t_8884a94e5d0993 5,240-241,243,250-254,270,290,295-297,302,356-359,361-362,377-388,576-582,632-644
+plugins/pstack/skills/poteto-mode/scripts/watch-pr/policy.test.ts
+  s_7b5f9f017c48f0::t_8e24c4565193c8 109
+plugins/pstack/skills/poteto-mode/scripts/watch-pr/policy.ts
+  s_7b5f9f017c48f0::t_770999d8617b23 1-5,70
+plugins/pstack/skills/poteto-mode/scripts/watch-pr/types.ts
+  s_7b5f9f017c48f0::t_126bed845ab742 382-390,401-404
+plugins/pstack/skills/principle-attack-the-premise/SKILL.md
+  s_7b5f9f017c48f0::t_96871c05ba8718 3,11,15-17,19
+plugins/pstack/skills/principle-build-the-lever/SKILL.md
+  s_7b5f9f017c48f0::t_4d5b6cf362635f 10,12,21
+plugins/pstack/skills/principle-encode-lessons-in-structure/SKILL.md
+  s_7b5f9f017c48f0::t_ba8d1464e343b5 9
+plugins/pstack/skills/principle-exhaust-the-design-space/SKILL.md
+  s_7b5f9f017c48f0::t_0a9573780e5541 9
+plugins/pstack/skills/principle-explain-the-number/SKILL.md
+  s_7b5f9f017c48f0::t_e3d141eba8ccad 9-11,17
+plugins/pstack/skills/principle-fix-root-causes/SKILL.md
+  s_7b5f9f017c48f0::t_9686b9543d2513 3,9,11,14-21
+plugins/pstack/skills/principle-make-operations-idempotent/SKILL.md
+  s_7b5f9f017c48f0::t_eb84676dfcf1f8 9,13-15
+plugins/pstack/skills/principle-minimize-reader-load/SKILL.md
+  s_7b5f9f017c48f0::t_55820207775d5c 9,16,18
+plugins/pstack/skills/principle-model-the-domain/SKILL.md
+  s_7b5f9f017c48f0::t_2fe07114c80086 3,9,11,14,19
+plugins/pstack/skills/principle-never-block-on-the-human/SKILL.md
+  s_7b5f9f017c48f0::t_305f79241078d6 3,9,11-15
+plugins/pstack/skills/principle-redesign-from-first-principles/SKILL.md
+  s_7b5f9f017c48f0::t_fd9c3189697aba 3,9
+plugins/pstack/skills/principle-subtract-before-you-add/SKILL.md
+  s_7b5f9f017c48f0::t_d1e784d8f3b3d4 9
+plugins/pstack/skills/principle-test-behavior-not-implementation/SKILL.md
+  s_7b5f9f017c48f0::t_40044c418a6e99 3,9,11,13-14,16,18,20
+plugins/pstack/skills/principle-type-system-discipline/SKILL.md
+  s_7b5f9f017c48f0::t_a4dfe0ff6beab2 3,9,11-13
+plugins/pstack/skills/recall/SKILL.md
+  s_7b5f9f017c48f0::t_12a0704d840cba 20
+plugins/pstack/skills/reflect/SKILL.md
+  s_796194c47608d8::t_4115eb120d64a8 16,18,28,32,42,46,48,50,52,54,56,58,63,65
+plugins/pstack/skills/reflect/references/divergent-reviewer.md
+  s_7b5f9f017c48f0::t_cd8b472cf26af4 5,21,23,25,27,29,32,34
+plugins/pstack/skills/reflect/references/judgment-reviewer.md
+  s_7b5f9f017c48f0::t_73b9d6d7ec027b 3,20,22,24,26,28,31,33
+plugins/pstack/skills/reflect/references/synthesizer.md
+  s_7b5f9f017c48f0::t_f093baf52583ed 21-22
+plugins/pstack/skills/reflect/references/tooling-reviewer.md
+  s_7b5f9f017c48f0::t_03c45349a32af3 3,9,31,33,35,37,39,42,44
+plugins/pstack/skills/sharpen/SKILL.md
+  s_7b5f9f017c48f0::t_4e5024b6cbfca5 1-6
+plugins/pstack/skills/show-me-your-work/SKILL.md
+  s_7b5f9f017c48f0::t_631dc055ba05e5 68
+plugins/pstack/skills/swarm/SKILL.md
+  s_7b5f9f017c48f0::t_ed51c147d65f27 25
+plugins/pstack/skills/technical-writing/SKILL.md
+  s_7b5f9f017c48f0::t_1a70d440c48da7 8,14,22,24,40,42,44,55,73,81,87-88,95
+plugins/pstack/skills/unslop/SKILL.md
+  s_7b5f9f017c48f0::t_73575c79ee4f9b 3,8,22,24,31,36,45,51,58-59
+plugins/pstack/skills/why/SKILL.md
+  s_7b5f9f017c48f0::t_f0c7f8f6ba1c33 12,14,16,24,30,32,34,52,54-57,59,61,63-69,73,75-76,82,84,91,95,97
+plugins/pstack/skills/why/references/epistemics.md
+  s_7b5f9f017c48f0::t_29bb7d2ac98125 3,7,11,13,17,19,23,25,29,31,35,37,41,43,45,53,55,59,63,67,69,71
+plugins/pstack/skills/why/references/investigator-prompt.md
+  s_7b5f9f017c48f0::t_61b9e1344f976c 3,7,9,34,36-41,43,47-49,51,55,61,64,71,74,78,81,84
+plugins/pstack/skills/why/references/sources/code-archaeology.md
+  s_7b5f9f017c48f0::t_b7d01fc847e4f3 9,11-12,21,33,49
+plugins/pstack/skills/why/references/sources/datadog.md
+  s_7b5f9f017c48f0::t_f684f3dbc9d0da 7,9-11,13,26,52,83-84,86-87
+plugins/pstack/skills/why/references/sources/sentry.md
+  s_7b5f9f017c48f0::t_c1157a8c7d2fe8 20,29,53
+plugins/pstack/skills/why/references/synthesizer-prompt.md
+  s_7b5f9f017c48f0::t_6096e094b199ac 3,7,29,31,35-36,40-45,49,55,59,63,68,72,76,80,90,92,94-95,99,111,119,121,123-127,129
+tests/generate.test.mjs
+  s_7b5f9f017c48f0::t_387a248a1641e9 498
+tests/skill-references.test.mjs
+  s_912a50df6b9787::t_03d767c6dd7f99 46-49
+tools/forks.json
+  s_f6084abc764237::t_2a2f45ed98af08 62-67
+tools/substitutions.json
+  s_7b5f9f017c48f0::t_cea148a1995eaf 3-91,192,198,210
+tools/upstream.json
+  s_f6084abc764237::t_9abeec191fbe8d 7,10,24
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.7.5",
+  "base_commit_sha": "beb9eb9d8bebe77562ae6c63593ef0fc92080e7b",
+  "prompts": {},
+  "sessions": {
+    "s_796194c47608d8": {
+      "agent_id": {
+        "tool": "claude",
+        "id": "a7f9ea85-c763-4e77-b80a-4cde1fb5a315",
+        "model": "claude-opus-5-5"
+      },
+      "human_author": "pattara <pattaraprach@gmail.com>"
+    },
+    "s_7b5f9f017c48f0": {
+      "agent_id": {
+        "tool": "codex",
+        "id": "01a13b63-3351-7e33-b31d-f1d758b00482",
+        "model": "gpt-6.1-sol"
+      },
+      "human_author": "pattara <pattaraprach@gmail.com>"
+    },
+    "s_912a50df6b9787": {
+      "agent_id": {
+        "tool": "codex",
+        "id": "01a148a8-a2a7-71b2-9ac9-9ff4cf65ea23",
+        "model": "gpt-6.1-sol"
+      },
+      "human_author": "pattara <pattaraprach@gmail.com>"
+    },
+    "s_f6084abc764237": {
+      "agent_id": {
+        "tool": "codex",
+        "id": "01a148a8-c58e-7212-ada2-baa2e1c8607f",
+        "model": "gpt-6.1-sol"
+      },
+      "human_author": "pattara <pattaraprach@gmail.com>"
+    }
+  }
+}
