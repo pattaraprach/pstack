@@ -24,4 +24,17 @@ A second live exec ran the installed setup skill with all roles set to `inherit-
 
 ## Hosted workflow evidence
 
-GitHub run summaries lagged the actual jobs during an Actions incident. Direct completed-job logs revealed a Linux stderr warning corrupting the merged JSON stream and failure reporting blocked by disabled repository Issues. The smoke now separates streams and uses `RUNNER_TEMP`; repository Issues is enabled. Final successful and deliberate-failure rerun evidence follows after verification.
+The final [manual success run](https://github.com/pattaraprach/pstack/actions/runs/39285795154) tested commit `50dd4be747a4661e1831988294508a1a9dc6e32c`. Its completed [job log](https://github.com/pattaraprach/pstack/actions/runs/39285795154/job/118171260966) records the exact source validation, 56/56 skills, negative boundary test, Codex install/list/exec, complete skill and adapter reads, hook injection, and existing-install upgrade. It finished cleanup at 16:29:26 UTC on 2026-10-19. No error appears in that complete job log. Publication and failure reporting were skipped on the successful branch run.
+
+The [deliberate failure run](https://github.com/pattaraprach/pstack/actions/runs/39285991137) tested the same commit with `break_validation=true`. Its [job log](https://github.com/pattaraprach/pstack/actions/runs/39285991137/job/118172024724) records the manifest schema rejection at 16:30:50 UTC and the successful update of [issue #4](https://github.com/pattaraprach/pstack/issues/4) at 16:30:53 UTC. Only one failure issue exists. The issue body identifies this run as the requested deliberate proof. Later checks and publication were skipped.
+
+Remote refs were identical before and after the deliberate run:
+
+| Ref | Before and after |
+| --- | --- |
+| `main` | `8ec0497e7bf6f1cb77dc42162928512c7b0ce4e8` |
+| `codex/track-original` | `50dd4be747a4661e1831988294508a1a9dc6e32c` |
+
+The first hosted attempts found a Linux warning on stderr being merged into JSON, and repository Issues being disabled. The smoke now separates stdout from diagnostics and uses `RUNNER_TEMP`; Issues is enabled. A subsequent bounded diagnostic identified the hosted bubblewrap loopback restriction. Ordinary execution is confined to the credential-free scripted fixture described above.
+
+During the GitHub Actions incident, run and check summaries lagged their actual completed job logs. The summaries still reported queued after the successful and deliberately failed jobs had completed. The evidence above comes from the complete job logs and the actual issue update and remote refs. Overall run-summary conclusions remain pending until GitHub catches up.
