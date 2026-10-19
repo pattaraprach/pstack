@@ -1,0 +1,44 @@
+package.json
+  s_5863f277e5e0bf::t_94de62baea1cde 4
+plugins/pstack/.codex-plugin/plugin.json
+  s_5863f277e5e0bf::t_94de62baea1cde 3
+tools/validate.mjs
+  s_5863f277e5e0bf::t_94de62baea1cde 35
+plugins/pstack/LICENSE
+  s_5863f277e5e0bf::t_2b20c318c76a10 4
+VERSION
+  s_5863f277e5e0bf::t_94de62baea1cde 1
+docs/overlay-files.md
+  s_5863f277e5e0bf::t_2b20c318c76a10 5-12
+README.md
+  s_5863f277e5e0bf::t_94de62baea1cde 5
+tools/generate.mjs
+  s_5863f277e5e0bf::t_2b20c318c76a10 56-65,67-71
+  s_5863f277e5e0bf::t_94de62baea1cde 18-19
+tools/schemas/plugin.schema.json
+  s_5863f277e5e0bf::t_94de62baea1cde 9
+overlay/codex/LICENSE
+  s_5863f277e5e0bf::t_2b20c318c76a10 1-22
+docs/track-original-decisions.tsv
+  s_5863f277e5e0bf::t_6c202a122e0a34 13-17
+docs/verification.md
+  s_5863f277e5e0bf::t_737e200c42e2eb 1-25
+package-lock.json
+  s_5863f277e5e0bf::t_ae6b736e5de452 3,9
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.7.5",
+  "base_commit_sha": "332f9cf0d8efcf4cf116ff72d33d197f9d91ea31",
+  "prompts": {},
+  "sessions": {
+    "s_5863f277e5e0bf": {
+      "agent_id": {
+        "tool": "codex",
+        "id": "01a154db-b774-7f02-9b66-5d53edfa16a1",
+        "model": "gpt-6.1-sol"
+      },
+      "human_author": "pattara <pattaraprach@gmail.com>"
+    }
+  }
+}
