@@ -1,0 +1,21 @@
+docs/track-original-decisions.tsv
+  s_5863f277e5e0bf::t_772231a88094c3 29
+docs/verification.md
+  s_5863f277e5e0bf::t_ddc80d4157004f 40
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.7.5",
+  "base_commit_sha": "67635b34f2667cf182450f7d231ac6bbcf4a9289",
+  "prompts": {},
+  "sessions": {
+    "s_5863f277e5e0bf": {
+      "agent_id": {
+        "tool": "codex",
+        "id": "01a154db-b774-7f02-9b66-5d53edfa16a1",
+        "model": "gpt-6.1-sol"
+      },
+      "human_author": "pattara <pattaraprach@gmail.com>"
+    }
+  }
+}
