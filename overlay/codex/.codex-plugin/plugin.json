@@ -1,0 +1,13 @@
+{
+  "name": "pstack",
+  "version": "@VERSION@",
+  "description": "Current original pstack by Lauren Tan, with a thin Codex compatibility overlay.",
+  "author": {
+    "name": "Lauren Tan; Codex overlay by Pattaraprach"
+  },
+  "homepage": "https://github.com/pattaraprach/pstack",
+  "repository": "https://github.com/pattaraprach/pstack",
+  "license": "MIT",
+  "skills": "./skills/",
+  "hooks": "./hooks/codex-hooks.json"
+}

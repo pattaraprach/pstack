@@ -1,6 +1,5 @@
 #!/bin/sh
-# Decode the sheet once, before any consumer interprets its lines. PowerShell
-# 5.1 writes UTF-16LE; other writers may add a UTF-8 BOM or CRLF line endings.
+# PowerShell 5.1 writes UTF-16LE; other writers may add a UTF-8 BOM or CRLF.
 set -eu
 sheet=$1
 [ -f "$sheet" ] && [ -r "$sheet" ] || exit 1

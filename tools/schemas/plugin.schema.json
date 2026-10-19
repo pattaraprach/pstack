@@ -1,0 +1,18 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "title": "Fork's Codex 0.163.0 plugin contract (manifest.rs PluginManifest)",
+  "type": "object",
+  "additionalProperties": false,
+  "required": ["name", "version", "description", "author", "homepage", "repository", "license", "skills", "hooks"],
+  "properties": {
+    "name": {"const": "pstack"},
+    "version": {"type": "string", "pattern": "^[0-9]+\\.[0-9]+\\.[0-9]+\\+codex\\.[0-9]+$"},
+    "description": {"type": "string", "minLength": 1},
+    "author": {"type": "object", "required": ["name"], "properties": {"name": {"type": "string"}}, "additionalProperties": false},
+    "homepage": {"const": "https://github.com/pattaraprach/pstack"},
+    "repository": {"const": "https://github.com/pattaraprach/pstack"},
+    "license": {"const": "MIT"},
+    "skills": {"const": "./skills/"},
+    "hooks": {"const": "./hooks/codex-hooks.json"}
+  }
+}
