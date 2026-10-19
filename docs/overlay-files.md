@@ -2,13 +2,14 @@
 
 Regenerate with `npm run build`. All original files are copied unchanged except the files listed below. No original workflow policy or model defaults are rewritten.
 
-- `.codex-plugin/plugin.json`. Codex runtime file supplied by the overlay.
-- `docs/harness/codex.md`. Codex runtime file supplied by the overlay.
-- `hooks/codex-hooks.json`. Codex runtime file supplied by the overlay.
-- `hooks/session-start-context.md`. Codex runtime file supplied by the overlay.
-- `hooks/session-start.ps1`. Codex runtime file supplied by the overlay.
-- `hooks/session-start.sh`. Codex runtime file supplied by the overlay.
-- `skills/setup-pstack/scripts/read-sheet.sh`. Codex runtime file supplied by the overlay.
+- `.codex-plugin/plugin.json`. Declares the Codex plugin version, skills directory, and hook file at the existing install path.
+- `docs/harness/codex.md`. Maps Cursor tools, models, paths, and setup steps to Codex without rewriting original workflow policy.
+- `hooks/codex-hooks.json`. Registers the existing Codex SessionStart sources and Unix and Windows commands.
+- `hooks/session-start-context.md`. Keeps the existing poteto-mode routing mandate.
+- `hooks/session-start.ps1`. Preserves the Windows hook and model-sheet opt-out behavior.
+- `hooks/session-start.sh`. Injects the mandate on Unix unless the Codex model sheet opts out.
+- `LICENSE`. Retains the port author copyright for the adapted Codex hook and adapter in installed plugin copies.
+- `skills/setup-pstack/scripts/read-sheet.sh`. Normalizes UTF-8, BOM, CRLF, and PowerShell UTF-16LE model sheets for the Unix hook.
 - `skills/architect/SKILL.md`. Adds only the Codex adapter preamble.
 - `skills/arena/SKILL.md`. Adds only the Codex adapter preamble.
 - `skills/automate-me/SKILL.md`. Adds only the Codex adapter preamble.

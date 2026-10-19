@@ -15,7 +15,8 @@ export function files(dir) {
     entry.isDirectory() ? files(join(dir, entry.name)) : [join(dir, entry.name)]);
 }
 export function generate() {
-  const version = `${readJson(join(source, 'plugin.json')).version}+codex.1`;
+  const upstream = readJson(join(root, 'upstream/source.json'));
+  const version = `${readJson(join(source, 'plugin.json')).version}+codex.1.${upstream.commit.slice(0, 12)}`;
   rmSync(build, { recursive: true, force: true });
   mkdirSync(build, { recursive: true });
   cpSync(source, build, { recursive: true, preserveTimestamps: true });
@@ -52,8 +53,22 @@ export function generate() {
     writeFileSync(lockPath, JSON.stringify(lock, null, 2) + '\n');
   }
   writeFileSync(join(root, 'VERSION'), version + '\n');
+  const reasons = {
+    '.codex-plugin/plugin.json': 'Declares the Codex plugin version, skills directory, and hook file at the existing install path.',
+    'LICENSE': 'Retains the port author copyright for the adapted Codex hook and adapter in installed plugin copies.',
+    'docs/harness/codex.md': 'Maps Cursor tools, models, paths, and setup steps to Codex without rewriting original workflow policy.',
+    'hooks/codex-hooks.json': 'Registers the existing Codex SessionStart sources and Unix and Windows commands.',
+    'hooks/session-start-context.md': 'Keeps the existing poteto-mode routing mandate.',
+    'hooks/session-start.ps1': 'Preserves the Windows hook and model-sheet opt-out behavior.',
+    'hooks/session-start.sh': 'Injects the mandate on Unix unless the Codex model sheet opts out.',
+    'skills/setup-pstack/scripts/read-sheet.sh': 'Normalizes UTF-8, BOM, CRLF, and PowerShell UTF-16LE model sheets for the Unix hook.',
+  };
   const edits = [
-    ...files(overlay).map(path => `- \`${relative(overlay, path)}\`. Codex runtime file supplied by the overlay.`),
+    ...files(overlay).map(path => {
+      const name = relative(overlay, path);
+      if (!reasons[name]) throw new Error(`Undocumented overlay file: ${name}`);
+      return `- \`${name}\`. ${reasons[name]}`;
+    }),
     ...skills(source).map(name => `- \`skills/${name}/SKILL.md\`. Adds only the Codex adapter preamble${name === 'setup-pstack' ? ' and explicitly delegates setup overrides to it' : ''}.`),
   ];
   writeFileSync(join(root, 'docs/overlay-files.md'), '# Generated Codex changes\n\nRegenerate with `npm run build`. All original files are copied unchanged except the files listed below. No original workflow policy or model defaults are rewritten.\n\n' + edits.join('\n') + '\n- `plugin.json`. Omitted from the generated build because Codex prefers this portable manifest over `.codex-plugin/plugin.json`, bypassing the Codex version and hooks. The untouched mirror retains it.\n\nThe generator also stamps the version into `.codex-plugin/plugin.json`, root `VERSION`, and `package.json`, and preserves the existing root marketplace identity.\n');

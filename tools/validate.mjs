@@ -32,7 +32,7 @@ export function validate() {
     const check = ajv.compile(readJson(join(root, 'tools/schemas', `${kind}.schema.json`)));
     assert.ok(check(readJson(path)), `${kind} schema: ${JSON.stringify(check.errors)}`);
   }
-  const version = `${readJson(join(source, 'plugin.json')).version}+codex.1`;
+  const version = `${readJson(join(source, 'plugin.json')).version}+codex.1.${record.commit.slice(0, 12)}`;
   const manifest = readJson(join(build, '.codex-plugin/plugin.json'));
   assert.equal(manifest.version, version);
   assert.equal(readJson(join(root, 'package.json')).version, version);

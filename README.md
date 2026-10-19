@@ -2,7 +2,7 @@
 
 This fork gives Codex the current original [pstack by Lauren Tan](https://github.com/cursor/plugins/tree/main/pstack). A daily GitHub Action copies the original source and regenerates a small Codex compatibility layer. Claude Code users should install the original directly.
 
-Existing installs keep the marketplace name `pstack-faithful`, plugin name `pstack`, and plugin path `plugins/pstack`. After this PR is reviewed and merged, configured Codex homes can run `codex plugin marketplace upgrade`. The build version is the original version plus `+codex.1`.
+Existing installs keep the marketplace name `pstack-faithful`, plugin name `pstack`, and plugin path `plugins/pstack`. After this PR is reviewed and merged, configured Codex homes can run `codex plugin marketplace upgrade`. The build version is the original version plus `+codex.1.<upstream SHA prefix>`.
 
 ## Install in Codex
 
