@@ -24,4 +24,4 @@ A second live exec ran the installed setup skill with all roles set to `inherit-
 
 ## Hosted workflow evidence
 
-Branch success, deliberate failure, issue handling, and unchanged remote refs are recorded here after the queued hosted runs complete. The initial [manual branch run](https://github.com/pattaraprach/pstack/actions/runs/39282313826) was queued while GitHub reported degraded Actions availability.
+GitHub run summaries lagged the actual jobs during an Actions incident. Direct completed-job logs revealed a Linux stderr warning corrupting the merged JSON stream and failure reporting blocked by disabled repository Issues. The smoke now separates streams and uses `RUNNER_TEMP`; repository Issues is enabled. Final successful and deliberate-failure rerun evidence follows after verification.

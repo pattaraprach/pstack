@@ -5,7 +5,7 @@ import { tmpdir } from 'node:os';
 import { join } from 'node:path';
 import { root, build, readJson } from './generate.mjs';
 
-const scratch = mkdtempSync(join(tmpdir(), 'pstack-upgrade-'));
+const scratch = mkdtempSync(join(process.env.RUNNER_TEMP || tmpdir(), 'pstack-upgrade-'));
 const fixture = join(scratch, 'fixture');
 const home = join(scratch, 'home');
 const codexHome = join(scratch, 'codex');

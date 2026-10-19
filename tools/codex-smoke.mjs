@@ -6,7 +6,7 @@ import { tmpdir } from 'node:os';
 import { join } from 'node:path';
 import { build, root, skills } from './generate.mjs';
 
-const scratch = mkdtempSync(join(tmpdir(), 'pstack-codex-smoke-'));
+const scratch = mkdtempSync(join(process.env.RUNNER_TEMP || tmpdir(), 'pstack-codex-smoke-'));
 const home = join(scratch, 'home');
 const codexHome = join(scratch, 'codex');
 const workspace = join(scratch, 'workspace');
@@ -22,13 +22,14 @@ function run(args) {
   return new Promise((resolve, reject) => {
     const child = spawn(cli, args, { cwd: workspace, env, stdio: ['ignore', 'pipe', 'pipe'] });
     let output = '';
+    let diagnostics = '';
     const timer = setTimeout(() => { child.kill('SIGKILL'); }, 45000);
     child.stdout.on('data', data => { output += data; });
-    child.stderr.on('data', data => { output += data; });
+    child.stderr.on('data', data => { diagnostics += data; });
     child.once('error', error => { clearTimeout(timer); reject(error); });
     child.once('close', code => {
       clearTimeout(timer);
-      if (code !== 0) reject(new Error(`codex ${args.join(' ')} exited ${code}\n${output}`));
+      if (code !== 0) reject(new Error(`codex ${args.join(' ')} exited ${code}\n${output}\n${diagnostics}`));
       else resolve(output);
     });
   });
