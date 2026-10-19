@@ -34,7 +34,7 @@ try {
   run('tar', ['-x', '-C', fixture], { input: archive });
   run('git', ['init', '--quiet', '--initial-branch=main']);
   run('git', ['add', '.']);
-  run('git', ['commit', '--quiet', '-m', 'Existing 0.9.75 marketplace fixture']);
+  run('git', ['commit', '--only', '--quiet', '-m', 'Existing 0.9.75 marketplace fixture', '--', '.']);
   run(cli, ['plugin', 'marketplace', 'add', 'https://github.com/pstack-proof/marketplace.git', '--json']);
   const initial = JSON.parse(run(cli, ['plugin', 'add', 'pstack@pstack-faithful', '--json']));
   assert.equal(initial.version, '0.9.75');
@@ -42,7 +42,7 @@ try {
   cpSync(build, join(fixture, 'plugins/pstack'), { recursive: true });
   cpSync(join(root, '.agents/plugins/marketplace.json'), join(fixture, '.agents/plugins/marketplace.json'));
   run('git', ['add', '.']);
-  run('git', ['commit', '--quiet', '-m', 'Current original with Codex overlay']);
+  run('git', ['commit', '--only', '--quiet', '-m', 'Current original with Codex overlay', '--', '.']);
   const upgrade = run(cli, ['plugin', 'marketplace', 'upgrade', 'pstack-faithful']);
   const listing = JSON.parse(run(cli, ['plugin', 'list', '--json']));
   const expected = readJson(join(build, '.codex-plugin/plugin.json')).version;
