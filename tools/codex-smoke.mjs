@@ -85,7 +85,7 @@ try {
   for (const name of skills(build)) assert.ok(first.includes(`pstack:${name}`), `Installed skill missing from catalog: ${name}`);
   const toolOutputs = requests[1].input.filter(item => item.type === 'function_call_output');
   const toolText = JSON.stringify(toolOutputs);
-  for (const path of [skillPath, adapterPath]) assert.ok(toolText.includes(JSON.stringify(readFileSync(path, 'utf8')).slice(1,-1)), `CLI tool must read the entire installed file: ${path}`);
+  for (const path of [skillPath, adapterPath]) assert.ok(toolText.includes(JSON.stringify(readFileSync(path, 'utf8')).slice(1,-1)), `CLI tool must read the entire installed file: ${path}. Actual tool output: ${toolText.slice(0, 3000)}`);
   assert.ok(output.includes('pstack loader smoke complete'));
   assert.ok(output.includes('turn.completed'));
   console.log(`${version}: marketplace install/list, ${skills(build).length} skill catalog entries, SessionStart injection, installed poteto-mode + adapter read, and exec completion passed without credentials.`);
