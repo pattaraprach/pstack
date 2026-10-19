@@ -1,0 +1,24 @@
+.github/workflows/ci.yml
+  s_5863f277e5e0bf::t_4d5e5f344ad7f7 85,87
+  s_5863f277e5e0bf::t_8120f63fe0358e 88
+docs/verification.md
+  s_5863f277e5e0bf::t_4d5e5f344ad7f7 9-10
+docs/track-original-decisions.tsv
+  s_5863f277e5e0bf::t_570a587112c89b 18
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.7.5",
+  "base_commit_sha": "611c6149d25222615898752ef9947b6ec3698ff0",
+  "prompts": {},
+  "sessions": {
+    "s_5863f277e5e0bf": {
+      "agent_id": {
+        "tool": "codex",
+        "id": "01a154db-b774-7f02-9b66-5d53edfa16a1",
+        "model": "gpt-6.1-sol"
+      },
+      "human_author": "pattara <pattaraprach@gmail.com>"
+    }
+  }
+}
