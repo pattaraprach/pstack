@@ -1,0 +1,19 @@
+tools/upgrade-smoke.mjs
+  s_5863f277e5e0bf::t_08cec0409da3b9 37,45
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.7.5",
+  "base_commit_sha": "a0cdc7529f9a404486b3f21294cf47ba3656fea0",
+  "prompts": {},
+  "sessions": {
+    "s_5863f277e5e0bf": {
+      "agent_id": {
+        "tool": "codex",
+        "id": "01a154db-b774-7f02-9b66-5d53edfa16a1",
+        "model": "gpt-6.1-sol"
+      },
+      "human_author": "pattara <pattaraprach@gmail.com>"
+    }
+  }
+}
