@@ -82,8 +82,10 @@ jobs:
           git config user.name 'github-actions[bot]'
           git config user.email '41898282+github-actions[bot]@users.noreply.github.com'
           gh auth setup-git
-          git add -- upstream plugins .agents/plugins/marketplace.json VERSION package.json package-lock.json docs/overlay-files.md
+          git add --force -- upstream plugins .agents/plugins/marketplace.json VERSION package.json package-lock.json docs/overlay-files.md
           git commit --only -m "Track original pstack $(cat VERSION)" -- upstream plugins .agents/plugins/marketplace.json VERSION package.json package-lock.json docs/overlay-files.md
+          test "$(git rev-parse HEAD:upstream/pstack)" = "$new_tree"
+          node --input-type=module -e "import assert from 'node:assert/strict';import {execFileSync} from 'node:child_process';const {gitTree}=await import(process.env.PSTACK_CANDIDATE+'/tools/validate.mjs');assert.equal(execFileSync('git',['rev-parse','HEAD:plugins/pstack'],{encoding:'utf8'}).trim(),gitTree('./plugins/pstack').toString('hex'),'Committed build must match the validated files');"
           git push origin HEAD:main
       - name: Open or update the single failure issue
         if: failure() && (github.event_name == 'schedule' || github.event_name == 'workflow_dispatch')

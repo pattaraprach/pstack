@@ -6,6 +6,8 @@ The local checks passed with Codex CLI 0.163.0. The original source is v0.15.28 
 
 `npm run validate` verified the mirror's exact Git tree `06803099e18ed488c8c2a2fda118ce772b4e2a77`, the fork's manifest schemas, all 56 original skills, every generated file, executable modes, and Unix hook injection and opt-out. The model sheet cases include UTF-8, BOM, CRLF, and UTF-16LE.
 
+A full local run from a Git archive also passed the same candidate sequence as Actions, including a fresh original fetch and the historical upgrade fixture fetch.
+
 `npm test` verified an untouched candidate passes, a corrupt manifest fails, and a modified source skill fails. The original checkout remained unchanged.
 
 `npm run smoke` used the actual production marketplace manifest and actual Codex CLI. It installed and listed the exact final build. The initial model request included all 56 skill names and the full SessionStart mandate as developer context. Codex executed two file reads. The next model request contained the complete installed poteto-mode skill and Codex adapter. The exec exited successfully. The server supplied scripted Responses events, with no model credentials. All processes and temporary homes were removed.
