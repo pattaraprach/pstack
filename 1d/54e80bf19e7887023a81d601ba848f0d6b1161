@@ -1,0 +1,27 @@
+.serena/.gitignore
+  s_5863f277e5e0bf::t_2962fe5eb98895 1-2
+.serena/project.yml
+  s_5863f277e5e0bf::t_18b8a3c3e68d41 1-169
+README.md
+  s_5863f277e5e0bf::t_ea0e795b7fa65c 49
+docs/track-original-decisions.tsv
+  s_5863f277e5e0bf::t_a252bf8639d0f1 26-28
+docs/verification.md
+  s_5863f277e5e0bf::t_c324c793f74a69 40
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.7.5",
+  "base_commit_sha": "1d54e80bf19e7887023a81d601ba848f0d6b1161",
+  "prompts": {},
+  "sessions": {
+    "s_5863f277e5e0bf": {
+      "agent_id": {
+        "tool": "codex",
+        "id": "01a154db-b774-7f02-9b66-5d53edfa16a1",
+        "model": "gpt-6.1-sol"
+      },
+      "human_author": "pattara <pattaraprach@gmail.com>"
+    }
+  }
+}
