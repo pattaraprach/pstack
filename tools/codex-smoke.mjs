@@ -77,7 +77,7 @@ try {
   await new Promise(resolve => server.listen(0, '127.0.0.1', resolve));
   const config = readFileSync(join(codexHome, 'config.toml'), 'utf8');
   writeFileSync(join(codexHome, 'config.toml'), `model="loader-smoke"\nmodel_provider="smoke"\ntool_output_token_limit=40000\n[model_providers.smoke]\nname="Offline loader smoke"\nbase_url="http://127.0.0.1:${server.address().port}/v1"\nwire_api="responses"\nrequires_openai_auth=false\nrequest_max_retries=0\nstream_max_retries=0\n${config}`);
-  const output = await run(['exec', '--skip-git-repo-check', '--ephemeral', '--dangerously-bypass-hook-trust', '--json', '--sandbox', 'read-only', '--cd', workspace, '$pstack:poteto-mode Read your installed skill and Codex adapter. This is a loader smoke test.']);
+  const output = await run(['exec', '--skip-git-repo-check', '--ephemeral', '--dangerously-bypass-hook-trust', '--json', '--sandbox', 'danger-full-access', '--cd', workspace, '$pstack:poteto-mode Read your installed skill and Codex adapter. This is a loader smoke test.']);
   assert.equal(requests.length, 2, 'Mock provider must see the tool round trip');
   const first = JSON.stringify(requests[0]);
   const mandate = readFileSync(join(build, 'hooks/session-start-context.md'), 'utf8').trim();
