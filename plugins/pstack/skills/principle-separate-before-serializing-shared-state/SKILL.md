@@ -1,8 +1,11 @@
 ---
 name: principle-separate-before-serializing-shared-state
 description: "Apply when concurrent actors might write to the same file, branch, key, or state object. Eliminate the sharing first; serialize structurally only when one shared writer is a real invariant."
-user-invocable: false
+disable-model-invocation: true
 ---
+
+In Codex, read [the Codex adapter](../../docs/harness/codex.md) once per session before following this skill.
+
 
 # Separate Before Serializing Shared State
 

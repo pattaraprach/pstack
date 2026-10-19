@@ -1,8 +1,11 @@
 ---
 name: principle-migrate-callers-then-delete-legacy-apis
 description: "Apply when introducing a new internal API while old callers still exist. Migrate callers and delete the old API in the same wave instead of preserving compatibility layers."
-user-invocable: false
+disable-model-invocation: true
 ---
+
+In Codex, read [the Codex adapter](../../docs/harness/codex.md) once per session before following this skill.
+
 
 # Migrate Callers Then Delete Legacy APIs
 

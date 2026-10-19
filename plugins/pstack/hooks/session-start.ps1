@@ -7,7 +7,6 @@ if (-not $sheetRoot) {
 $sheet = Join-Path $sheetRoot 'pstack-models.md'
 $off = $false
 if (Test-Path -LiteralPath $sheet -PathType Leaf) {
-    # An unreadable sheet leaves the hook on, as session-start.sh does.
     try {
         $bytes = [System.IO.File]::ReadAllBytes($sheet)
         # Windows PowerShell 5.1's `>` writes UTF-16 LE with a byte-order mark.

@@ -1,8 +1,11 @@
 ---
 name: principle-exhaust-the-design-space
 description: "Apply when facing a novel UI interaction or architectural decision with no precedent in the codebase. Build 2-3 competing prototypes and compare side by side before committing."
-user-invocable: false
+disable-model-invocation: true
 ---
+
+In Codex, read [the Codex adapter](../../docs/harness/codex.md) once per session before following this skill.
+
 
 # Exhaust the Design Space
 

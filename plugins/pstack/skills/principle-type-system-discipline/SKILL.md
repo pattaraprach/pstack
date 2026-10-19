@@ -1,8 +1,11 @@
 ---
 name: principle-type-system-discipline
 description: "Apply when designing types, reviewing a function signature, or writing code in any statically-typed language. Make illegal states unrepresentable, brand semantic primitives, parse external data at boundaries, exhaust variants, derive from authoritative schemas."
-user-invocable: false
+disable-model-invocation: true
 ---
+
+In Codex, read [the Codex adapter](../../docs/harness/codex.md) once per session before following this skill.
+
 
 # Type System Discipline
 

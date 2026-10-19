@@ -1,0 +1,21 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "title": "Fork's stable Codex marketplace contract (marketplace.rs MarketplaceManifest)",
+  "type": "object",
+  "additionalProperties": false,
+  "required": ["name", "interface", "plugins"],
+  "properties": {
+    "name": {"const": "pstack-faithful"},
+    "interface": {"const": {"displayName": "pstack"}},
+    "plugins": {"type": "array", "minItems": 1, "maxItems": 1, "items": {
+      "type": "object", "additionalProperties": false,
+      "required": ["name", "source", "policy", "category"],
+      "properties": {
+        "name": {"const": "pstack"},
+        "source": {"const": {"source": "local", "path": "./plugins/pstack"}},
+        "policy": {"const": {"installation": "AVAILABLE", "authentication": "ON_INSTALL", "products": ["CODEX"]}},
+        "category": {"const": "Developer Tools"}
+      }
+    }}
+  }
+}

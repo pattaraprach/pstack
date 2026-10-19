@@ -1,0 +1,71 @@
+# Generated Codex changes
+
+Regenerate with `npm run build`. All original files are copied unchanged except the files listed below. No original workflow policy or model defaults are rewritten.
+
+- `.codex-plugin/plugin.json`. Declares the Codex plugin version, skills directory, and hook file at the existing install path.
+- `docs/harness/codex.md`. Maps Cursor tools, models, paths, and setup steps to Codex without rewriting original workflow policy.
+- `hooks/codex-hooks.json`. Registers the existing Codex SessionStart sources and Unix and Windows commands.
+- `hooks/session-start-context.md`. Keeps the existing poteto-mode routing mandate.
+- `hooks/session-start.ps1`. Preserves the Windows hook and model-sheet opt-out behavior.
+- `hooks/session-start.sh`. Injects the mandate on Unix unless the Codex model sheet opts out.
+- `LICENSE`. Retains the port author copyright for the adapted Codex hook and adapter in installed plugin copies.
+- `skills/setup-pstack/scripts/read-sheet.sh`. Normalizes UTF-8, BOM, CRLF, and PowerShell UTF-16LE model sheets for the Unix hook.
+- `skills/architect/SKILL.md`. Adds only the Codex adapter preamble.
+- `skills/arena/SKILL.md`. Adds only the Codex adapter preamble.
+- `skills/automate-me/SKILL.md`. Adds only the Codex adapter preamble.
+- `skills/benchmark-checklist/SKILL.md`. Adds only the Codex adapter preamble.
+- `skills/blast-radius/SKILL.md`. Adds only the Codex adapter preamble.
+- `skills/bro/SKILL.md`. Adds only the Codex adapter preamble.
+- `skills/correct/SKILL.md`. Adds only the Codex adapter preamble.
+- `skills/create-formal-verification-skill/SKILL.md`. Adds only the Codex adapter preamble.
+- `skills/create-verification-skill/SKILL.md`. Adds only the Codex adapter preamble.
+- `skills/figure-it-out/SKILL.md`. Adds only the Codex adapter preamble.
+- `skills/how/SKILL.md`. Adds only the Codex adapter preamble.
+- `skills/in-your-own-words/SKILL.md`. Adds only the Codex adapter preamble.
+- `skills/interrogate/SKILL.md`. Adds only the Codex adapter preamble.
+- `skills/ketchup/SKILL.md`. Adds only the Codex adapter preamble.
+- `skills/maintain-formal-verification-skill/SKILL.md`. Adds only the Codex adapter preamble.
+- `skills/maintain-verification-skill/SKILL.md`. Adds only the Codex adapter preamble.
+- `skills/make-bot-ui/SKILL.md`. Adds only the Codex adapter preamble.
+- `skills/no-comments/SKILL.md`. Adds only the Codex adapter preamble.
+- `skills/poteto-help/SKILL.md`. Adds only the Codex adapter preamble.
+- `skills/poteto-mode/SKILL.md`. Adds only the Codex adapter preamble.
+- `skills/principle-attack-the-premise/SKILL.md`. Adds only the Codex adapter preamble.
+- `skills/principle-boundary-discipline/SKILL.md`. Adds only the Codex adapter preamble.
+- `skills/principle-build-the-lever/SKILL.md`. Adds only the Codex adapter preamble.
+- `skills/principle-encode-lessons-in-structure/SKILL.md`. Adds only the Codex adapter preamble.
+- `skills/principle-exhaust-the-design-space/SKILL.md`. Adds only the Codex adapter preamble.
+- `skills/principle-experience-first/SKILL.md`. Adds only the Codex adapter preamble.
+- `skills/principle-explain-the-number/SKILL.md`. Adds only the Codex adapter preamble.
+- `skills/principle-fix-root-causes/SKILL.md`. Adds only the Codex adapter preamble.
+- `skills/principle-foundational-thinking/SKILL.md`. Adds only the Codex adapter preamble.
+- `skills/principle-guard-the-context-window/SKILL.md`. Adds only the Codex adapter preamble.
+- `skills/principle-laziness-protocol/SKILL.md`. Adds only the Codex adapter preamble.
+- `skills/principle-make-operations-idempotent/SKILL.md`. Adds only the Codex adapter preamble.
+- `skills/principle-migrate-callers-then-delete-legacy-apis/SKILL.md`. Adds only the Codex adapter preamble.
+- `skills/principle-minimize-reader-load/SKILL.md`. Adds only the Codex adapter preamble.
+- `skills/principle-model-the-domain/SKILL.md`. Adds only the Codex adapter preamble.
+- `skills/principle-never-block-on-the-human/SKILL.md`. Adds only the Codex adapter preamble.
+- `skills/principle-outcome-oriented-execution/SKILL.md`. Adds only the Codex adapter preamble.
+- `skills/principle-prove-it-works/SKILL.md`. Adds only the Codex adapter preamble.
+- `skills/principle-redesign-from-first-principles/SKILL.md`. Adds only the Codex adapter preamble.
+- `skills/principle-separate-before-serializing-shared-state/SKILL.md`. Adds only the Codex adapter preamble.
+- `skills/principle-sequence-verifiable-units/SKILL.md`. Adds only the Codex adapter preamble.
+- `skills/principle-subtract-before-you-add/SKILL.md`. Adds only the Codex adapter preamble.
+- `skills/principle-test-behavior-not-implementation/SKILL.md`. Adds only the Codex adapter preamble.
+- `skills/principle-type-system-discipline/SKILL.md`. Adds only the Codex adapter preamble.
+- `skills/recall/SKILL.md`. Adds only the Codex adapter preamble.
+- `skills/reflect/SKILL.md`. Adds only the Codex adapter preamble.
+- `skills/setup-pstack/SKILL.md`. Adds only the Codex adapter preamble and explicitly delegates setup overrides to it.
+- `skills/sharpen/SKILL.md`. Adds only the Codex adapter preamble.
+- `skills/show-me-your-work/SKILL.md`. Adds only the Codex adapter preamble.
+- `skills/swarm/SKILL.md`. Adds only the Codex adapter preamble.
+- `skills/tdd/SKILL.md`. Adds only the Codex adapter preamble.
+- `skills/teach/SKILL.md`. Adds only the Codex adapter preamble.
+- `skills/technical-writing/SKILL.md`. Adds only the Codex adapter preamble.
+- `skills/typescript-best-practices/SKILL.md`. Adds only the Codex adapter preamble.
+- `skills/unslop/SKILL.md`. Adds only the Codex adapter preamble.
+- `skills/why/SKILL.md`. Adds only the Codex adapter preamble.
+- `plugin.json`. Omitted from the generated build because Codex prefers this portable manifest over `.codex-plugin/plugin.json`, bypassing the Codex version and hooks. The untouched mirror retains it.
+
+The generator also stamps the version into `.codex-plugin/plugin.json`, root `VERSION`, and `package.json`, and preserves the existing root marketplace identity.
