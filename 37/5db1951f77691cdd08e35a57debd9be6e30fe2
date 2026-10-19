@@ -1,0 +1,652 @@
+overlay/codex/.codex-plugin/plugin.json
+  s_5863f277e5e0bf::t_c8dfa48e463dac 1-13
+upstream/source.json
+  s_5863f277e5e0bf::t_c8dfa48e463dac 1-6
+tools/generate.mjs
+  s_5863f277e5e0bf::t_e0a1a6d7ce3e68 22,59
+  s_5863f277e5e0bf::t_4600cbe561e01e 33,47-53
+  s_5863f277e5e0bf::t_f72e203d52b62d 1-21,23-32,34-39,41-46,54-57,60,62
+plugins/pstack/skills/setup-pstack/scripts/read-sheet.sh
+  s_5863f277e5e0bf::t_54d89bdd97ecfc 2
+SECURITY.md
+  s_5863f277e5e0bf::t_54d89bdd97ecfc 3,5
+overlay/codex/hooks/session-start.sh
+  s_5863f277e5e0bf::t_c8dfa48e463dac 1-10
+tools/codex-smoke.mjs
+  s_5863f277e5e0bf::t_c08ad923f7041b 7,38,41-42,51,54-55,57,60,67
+  s_5863f277e5e0bf::t_1cceb3d1fb1a2f 78
+  s_5863f277e5e0bf::t_8da20928f735c5 1-6,8-37,39-40,43-50,52-53,56,58-59,61-66,68-77,79-86,88-94
+  s_5863f277e5e0bf::t_e1d58f605f346d 87
+overlay/codex/skills/setup-pstack/scripts/read-sheet.sh
+  s_5863f277e5e0bf::t_54d89bdd97ecfc 1-13
+package.json
+  s_5863f277e5e0bf::t_c8dfa48e463dac 2,4-10,12-13
+tools/schemas/marketplace.schema.json
+  s_5863f277e5e0bf::t_9a15a2d29c0b5f 1-21
+overlay/codex/hooks/codex-hooks.json
+  s_5863f277e5e0bf::t_c8dfa48e463dac 1-16
+tools/failure-issue.mjs
+  s_5863f277e5e0bf::t_5112141c4f6e82 1-20
+tools/schemas/plugin.schema.json
+  s_5863f277e5e0bf::t_9a15a2d29c0b5f 1-18
+tools/sync.mjs
+  s_5863f277e5e0bf::t_5112141c4f6e82 1-21
+README.md
+  s_5863f277e5e0bf::t_e0a1a6d7ce3e68 27
+  s_5863f277e5e0bf::t_759df18b689072 1,3,5,7,9,12,15,17,19,21,23,25,29,31,33-38,41,43,45,47,49,51,53,55
+tests/build.test.mjs
+  s_5863f277e5e0bf::t_4600cbe561e01e 13,16-17
+  s_5863f277e5e0bf::t_5112141c4f6e82 1-12,14-15,18-31
+.gitignore
+  s_5863f277e5e0bf::t_c8dfa48e463dac 1,5
+tools/validate.mjs
+  s_5863f277e5e0bf::t_9a15a2d29c0b5f 1-40,42-70
+  s_5863f277e5e0bf::t_e0a1a6d7ce3e68 41
+docs/track-original-decisions.tsv
+  s_5863f277e5e0bf::t_1364d8d5863332 1-2
+  s_5863f277e5e0bf::t_f1ecafb2a3ae76 3-12
+.github/workflows/ci.yml
+  s_5863f277e5e0bf::t_4600cbe561e01e 78,85-86
+  s_5863f277e5e0bf::t_5112141c4f6e82 1,7-14,17-18,21-22,25,27,29,32,34-36,38-42,44-67,69-70,72-77,79-84,87-96,98-100
+docs/overlay-files.md
+  s_5863f277e5e0bf::t_e0a1a6d7ce3e68 68
+  s_5863f277e5e0bf::t_1f26489384aae9 1-67,69-70
+overlay/codex/hooks/session-start.ps1
+  s_5863f277e5e0bf::t_54d89bdd97ecfc 1-23
+NOTICE.md
+  s_5863f277e5e0bf::t_9c0ea6056a61ff 1,3,5
+VERSION
+  s_5863f277e5e0bf::t_39f00214325b2b 1
+docs/codex-compatibility.md
+  s_5863f277e5e0bf::t_5eae8bf3e1e07f 1-9
+overlay/codex/docs/harness/codex.md
+  s_5863f277e5e0bf::t_0ea9f140973b92 1,3,5,7,9-16,18,20,22,24,26,28,30,32-36,38,40-48,50,52,54,56
+overlay/codex/hooks/session-start-context.md
+  s_5863f277e5e0bf::t_aa3e6d27e84401 1-15
+package-lock.json
+  s_5863f277e5e0bf::t_4aa316ae93a7c2 3-70,72
+plugins/pstack/.codex-plugin/plugin.json
+  s_5863f277e5e0bf::t_872e7cfd2c4306 3-4,6,12
+plugins/pstack/.cursor-plugin/plugin.json
+  s_5863f277e5e0bf::t_bc79dd6156ce2b 1-31
+plugins/pstack/.gitignore
+  s_5863f277e5e0bf::t_36aa2574a085b5 1-3
+plugins/pstack/LICENSE
+  s_5863f277e5e0bf::t_5478a1cc42f8b5 3
+plugins/pstack/README.md
+  s_5863f277e5e0bf::t_64d2a9addb68d5 3,5,7,9,11,13,15,17-19,21,23-287
+plugins/pstack/agents/poteto-agent.md
+  s_5863f277e5e0bf::t_40684b6d4fadc3 3-4,9
+plugins/pstack/automations/benny/FOR_AGENTS.md
+  s_5863f277e5e0bf::t_a3243815afa5c5 1-89
+plugins/pstack/automations/benny/README.md
+  s_5863f277e5e0bf::t_8f978faf02b6bb 1,3,5,7-23
+plugins/pstack/automations/benny/skills/reproduce-and-fix-issues/SKILL.md
+  s_5863f277e5e0bf::t_1b6c21f13e6d25 1-310
+plugins/pstack/automations/benny/skills/reproduce-and-fix-issues/references/control-adapter.md
+  s_5863f277e5e0bf::t_a605963a22d6ce 1-169
+plugins/pstack/automations/benny/skills/reproduce-and-fix-issues/references/feature-map.example.md
+  s_5863f277e5e0bf::t_763944a6c4955c 1-205
+plugins/pstack/automations/benny/skills/reproduce-and-fix-issues/references/verify-existing-fix.md
+  s_5863f277e5e0bf::t_b55e4cc8796fcf 1-93
+plugins/pstack/automations/benny/skills/setup-benny/SKILL.md
+  s_5863f277e5e0bf::t_da34d5b641a4dd 1-266
+plugins/pstack/automations/benny/skills/triage-issue-reports/SKILL.md
+  s_5863f277e5e0bf::t_8c431006bbe9e0 1-240
+plugins/pstack/automations/benny/skills/triage-issue-reports/references/routing.example.md
+  s_5863f277e5e0bf::t_d937e29d0d2e45 1,3,5,7-22,24-37,39-61
+plugins/pstack/automations/benny/templates/configuration.example.yaml
+  s_5863f277e5e0bf::t_def9ea318e2554 1,3-5,7-18,20-25,27-39,41-45,47-84
+plugins/pstack/automations/benny/templates/reproduce-automation-prompt.md
+  s_5863f277e5e0bf::t_e8afd585f6b1db 1-33
+plugins/pstack/automations/benny/templates/triage-automation-prompt.md
+  s_5863f277e5e0bf::t_bfde5bb317b46f 1-39
+plugins/pstack/docs/guide/01-setup.md
+  s_5863f277e5e0bf::t_452762522a6a91 1-66
+plugins/pstack/docs/guide/02-poteto-mode.md
+  s_5863f277e5e0bf::t_f917ebe694e476 1-139
+plugins/pstack/docs/guide/03-understand.md
+  s_5863f277e5e0bf::t_e7fe8321c036e2 1-79
+plugins/pstack/docs/guide/04-design.md
+  s_5863f277e5e0bf::t_49c0541f382f7e 1-133
+plugins/pstack/docs/guide/05-build-and-clean.md
+  s_5863f277e5e0bf::t_25a53499cd4a59 1-83
+plugins/pstack/docs/guide/06-verify-and-ship.md
+  s_5863f277e5e0bf::t_b80e70f052db68 1-152
+plugins/pstack/docs/guide/07-overnight.md
+  s_5863f277e5e0bf::t_2fad9fb809081b 1-122
+plugins/pstack/docs/guide/08-principles.md
+  s_5863f277e5e0bf::t_4dd8cd52b5d2db 1-72
+plugins/pstack/docs/guide/09-make-it-yours.md
+  s_5863f277e5e0bf::t_b14b8947f9e5d6 1-100
+plugins/pstack/docs/guide/10-recipes-and-pitfalls.md
+  s_5863f277e5e0bf::t_f6af71267c60b1 1-180
+plugins/pstack/docs/guide/README.md
+  s_5863f277e5e0bf::t_5fb59922db1bf0 1-38
+plugins/pstack/docs/harness/claude-code.md
+  s_5863f277e5e0bf::t_0d517172c6aa45 1-67
+plugins/pstack/docs/harness/codex.md
+  s_5863f277e5e0bf::t_ffbed44f94869c 1-56
+plugins/pstack/hooks/session-start.sh
+  s_5863f277e5e0bf::t_dc9f358019413f 3-8,10
+plugins/pstack/skills/architect/SKILL.md
+  s_5863f277e5e0bf::t_6a252f49666385 4,7,10,34
+plugins/pstack/skills/arena/SKILL.md
+  s_5863f277e5e0bf::t_62dcd9d61e2a36 4,7,10,20,31
+plugins/pstack/skills/automate-me/SKILL.md
+  s_5863f277e5e0bf::t_710d672b85550e 3-4,7,10,14,20,32,47,70,72,75,80,99,105
+plugins/pstack/skills/benchmark-checklist/SKILL.md
+  s_5863f277e5e0bf::t_3bcc30f89d3c3a 4,7-9
+plugins/pstack/skills/blast-radius/SKILL.md
+  s_5863f277e5e0bf::t_3f07e1f6e4f7fc 4,7-9
+plugins/pstack/skills/bro/SKILL.md
+  s_5863f277e5e0bf::t_e6b3a75873227c 4,7-9
+plugins/pstack/skills/correct/SKILL.md
+  s_5863f277e5e0bf::t_a85fee93dfc42e 4,7-9
+plugins/pstack/skills/create-formal-verification-skill/SKILL.md
+  s_5863f277e5e0bf::t_47f019caf6242e 1-44
+plugins/pstack/skills/create-verification-skill/SKILL.md
+  s_5863f277e5e0bf::t_1f89e4916d4c83 3-4,7,10,12,28,39
+plugins/pstack/skills/figure-it-out/SKILL.md
+  s_5863f277e5e0bf::t_a4684f38978c89 4,7-9
+plugins/pstack/skills/how/SKILL.md
+  s_5863f277e5e0bf::t_fda6e626503402 4,7,10,14
+plugins/pstack/skills/in-your-own-words/SKILL.md
+  s_5863f277e5e0bf::t_a7878f1d4157f7 4,7-9
+plugins/pstack/skills/interrogate/SKILL.md
+  s_5863f277e5e0bf::t_93907aab74a13c 4,7,10,30,34-35,37,39
+plugins/pstack/skills/ketchup/SKILL.md
+  s_5863f277e5e0bf::t_5c8263b121f92d 3-4,7-9,12,20-22,26,28,32,34-36,40-42,46
+plugins/pstack/skills/maintain-formal-verification-skill/SKILL.md
+  s_5863f277e5e0bf::t_327e250a3f5a8d 1-61
+plugins/pstack/skills/maintain-verification-skill/SKILL.md
+  s_5863f277e5e0bf::t_83af8a9d1d3a05 4,7,10,28
+plugins/pstack/skills/make-bot-ui/SKILL.md
+  s_5863f277e5e0bf::t_1608c4a10c9dad 1-118
+plugins/pstack/skills/no-comments/SKILL.md
+  s_5863f277e5e0bf::t_2e88889af84365 3-4,7,10,12,14,22
+plugins/pstack/skills/poteto-help/SKILL.md
+  s_5863f277e5e0bf::t_d99aa1c9834866 4,7-9,14,16,30-32,41-47,49,51,55,57-63,78,82,92-93,97,101,117-119,129,132,134,136,142,144,146-148,151,160-161
+plugins/pstack/skills/poteto-help/references/recipes.md
+  s_5863f277e5e0bf::t_f5e2566e08d693 19,37,47
+plugins/pstack/skills/poteto-mode/SKILL.md
+  s_5863f277e5e0bf::t_47b99d9dc50602 4-6,9,12,23,29,31,33,35,37,96,98,100,149
+plugins/pstack/skills/poteto-mode/playbooks/authoring-a-skill.md
+  s_5863f277e5e0bf::t_7c5bb7446bcd92 5
+plugins/pstack/skills/poteto-mode/playbooks/autonomous-run.md
+  s_5863f277e5e0bf::t_222715af2d99aa 6,9
+plugins/pstack/skills/poteto-mode/playbooks/autopilot-full.md
+  s_5863f277e5e0bf::t_b86dd1eb05ca48 8,10,12,14,22
+plugins/pstack/skills/poteto-mode/playbooks/autopilot-stack.md
+  s_5863f277e5e0bf::t_c51841c05ea75b 3
+plugins/pstack/skills/poteto-mode/playbooks/babysit.md
+  s_5863f277e5e0bf::t_76bd96fb78ef76 3,7,12
+plugins/pstack/skills/poteto-mode/playbooks/bug-fix.md
+  s_5863f277e5e0bf::t_0b7dad0853b7af 7-9
+plugins/pstack/skills/poteto-mode/playbooks/eval.md
+  s_5863f277e5e0bf::t_6db8fb096bd3cc 7,22
+plugins/pstack/skills/poteto-mode/playbooks/feature.md
+  s_5863f277e5e0bf::t_7bebc27014331a 12
+plugins/pstack/skills/poteto-mode/playbooks/hillclimb.md
+  s_5863f277e5e0bf::t_4afad4892b3ec6 12
+plugins/pstack/skills/poteto-mode/playbooks/multi-phase-plan.md
+  s_5863f277e5e0bf::t_6aa9eed5431a37 7-8,10,13,15,26,35-42,60-61,65,71,75,100,123,130,152
+plugins/pstack/skills/poteto-mode/playbooks/opening-a-pr.md
+  s_5863f277e5e0bf::t_f8eb3915e80a0a 5,9
+plugins/pstack/skills/poteto-mode/playbooks/orchestrate.md
+  s_5863f277e5e0bf::t_3c5ccdb44bc6a7 15-17,23,44,53,55,81,96,102
+plugins/pstack/skills/poteto-mode/playbooks/perf-issue.md
+  s_5863f277e5e0bf::t_85ace8dafcedca 5,17
+plugins/pstack/skills/poteto-mode/playbooks/prototype.md
+  s_5863f277e5e0bf::t_287d7474206fa8 11
+plugins/pstack/skills/poteto-mode/playbooks/refactoring.md
+  s_5863f277e5e0bf::t_4c4e8582c77238 11-12
+plugins/pstack/skills/poteto-mode/playbooks/runtime-forensics.md
+  s_5863f277e5e0bf::t_92d2bb09580bed 5
+plugins/pstack/skills/poteto-mode/playbooks/session-pickup.md
+  s_5863f277e5e0bf::t_c016e9bb6c9e8f 5
+plugins/pstack/skills/poteto-mode/playbooks/shipping.md
+  s_5863f277e5e0bf::t_b5ad11a2e17be4 5
+plugins/pstack/skills/poteto-mode/playbooks/visual-parity.md
+  s_5863f277e5e0bf::t_e33b6dba2746d7 8
+plugins/pstack/skills/poteto-mode/playbooks/worktree-cleanup.md
+  s_5863f277e5e0bf::t_f57aa71af48ce3 3-5,8
+plugins/pstack/skills/poteto-mode/scripts/check-plan.mjs
+  s_5863f277e5e0bf::t_cd4ec904146fd6 7,20,37,48-60,64-70,83-88,109,112,114,117,158
+plugins/pstack/skills/poteto-mode/scripts/check-plan.test.ts
+  s_5863f277e5e0bf::t_406144d03e6aba 9,23,35,47,54-63,67-69,73-74,78-80,84-87,89-90,94-95
+plugins/pstack/skills/poteto-mode/scripts/package.json
+  s_5863f277e5e0bf::t_76a5da4dc3fc96 7
+plugins/pstack/skills/poteto-mode/scripts/worktree-audit.sh
+  s_5863f277e5e0bf::t_41b7c585ab8d16 1-126
+plugins/pstack/skills/principle-attack-the-premise/SKILL.md
+  s_5863f277e5e0bf::t_2cf27a1422001e 4,7-9
+plugins/pstack/skills/principle-boundary-discipline/SKILL.md
+  s_5863f277e5e0bf::t_8c017496de9914 4,7-9
+plugins/pstack/skills/principle-build-the-lever/SKILL.md
+  s_5863f277e5e0bf::t_8c0f20cbe2be0c 4,6-8
+plugins/pstack/skills/principle-encode-lessons-in-structure/SKILL.md
+  s_5863f277e5e0bf::t_4080bb70fb1510 4,7-9
+plugins/pstack/skills/principle-exhaust-the-design-space/SKILL.md
+  s_5863f277e5e0bf::t_974b1dcd83dd01 4,7-9
+plugins/pstack/skills/principle-experience-first/SKILL.md
+  s_5863f277e5e0bf::t_6c9dd0018d90b9 4,7-9
+plugins/pstack/skills/principle-explain-the-number/SKILL.md
+  s_5863f277e5e0bf::t_e7f518a6c28268 4,7-9
+plugins/pstack/skills/principle-fix-root-causes/SKILL.md
+  s_5863f277e5e0bf::t_fc936943793c96 4,7-9
+plugins/pstack/skills/principle-foundational-thinking/SKILL.md
+  s_5863f277e5e0bf::t_ab712b1c72d896 4,7-9
+plugins/pstack/skills/principle-guard-the-context-window/SKILL.md
+  s_5863f277e5e0bf::t_d9a01343ac164f 4,7-9
+plugins/pstack/skills/principle-laziness-protocol/SKILL.md
+  s_5863f277e5e0bf::t_eb98796ca42e01 4,7-9
+plugins/pstack/skills/principle-make-operations-idempotent/SKILL.md
+  s_5863f277e5e0bf::t_4e182765a564ff 4,7-9
+plugins/pstack/skills/principle-migrate-callers-then-delete-legacy-apis/SKILL.md
+  s_5863f277e5e0bf::t_c739d6a395fbad 4,7-9
+plugins/pstack/skills/principle-minimize-reader-load/SKILL.md
+  s_5863f277e5e0bf::t_7c9f1de76cf082 4,7-9
+plugins/pstack/skills/principle-model-the-domain/SKILL.md
+  s_5863f277e5e0bf::t_dfbef6188ffef2 4,7-9
+plugins/pstack/skills/principle-never-block-on-the-human/SKILL.md
+  s_5863f277e5e0bf::t_101776c1edee31 4,7-9
+plugins/pstack/skills/principle-outcome-oriented-execution/SKILL.md
+  s_5863f277e5e0bf::t_b444e079c12bae 4,7-9
+plugins/pstack/skills/principle-prove-it-works/SKILL.md
+  s_5863f277e5e0bf::t_31f9e525872ea4 4,7-9
+plugins/pstack/skills/principle-redesign-from-first-principles/SKILL.md
+  s_5863f277e5e0bf::t_e25931579a4f38 4,7-9
+plugins/pstack/skills/principle-separate-before-serializing-shared-state/SKILL.md
+  s_5863f277e5e0bf::t_aa970fd50314de 4,7-9
+plugins/pstack/skills/principle-sequence-verifiable-units/SKILL.md
+  s_5863f277e5e0bf::t_cc1e0d567f4769 4,7-9
+plugins/pstack/skills/principle-subtract-before-you-add/SKILL.md
+  s_5863f277e5e0bf::t_dbc9ec23e9f48a 4,7-9
+plugins/pstack/skills/principle-test-behavior-not-implementation/SKILL.md
+  s_5863f277e5e0bf::t_4279078f4e2d40 4,7-9
+plugins/pstack/skills/principle-type-system-discipline/SKILL.md
+  s_5863f277e5e0bf::t_fff1bed3f13981 4,7-9
+plugins/pstack/skills/recall/SKILL.md
+  s_5863f277e5e0bf::t_fb9fad7c69ec7c 4,7-8,10,18
+plugins/pstack/skills/reflect/SKILL.md
+  s_5863f277e5e0bf::t_88a2eebf9a7cb6 4,7,10,18,21,24,28,30,32-36,38,42,57-59
+plugins/pstack/skills/reflect/references/divergent-reviewer.md
+  s_5863f277e5e0bf::t_eb8018227365f7 21
+plugins/pstack/skills/reflect/references/judgment-reviewer.md
+  s_5863f277e5e0bf::t_5b02556313bdf3 20
+plugins/pstack/skills/reflect/references/synthesizer.md
+  s_5863f277e5e0bf::t_ced8e8b9c2b952 17,44
+plugins/pstack/skills/reflect/references/tooling-reviewer.md
+  s_5863f277e5e0bf::t_2e3d7edeec1f69 31
+plugins/pstack/skills/setup-pstack/SKILL.md
+  s_5863f277e5e0bf::t_9a7b51c8767750 3,6,9,11,17,21,23,25,27-30,32,34,36,38,40,42,44-68,71,73,75,77,79,81
+plugins/pstack/skills/sharpen/SKILL.md
+  s_5863f277e5e0bf::t_c790a834283a7c 4,7-10
+plugins/pstack/skills/show-me-your-work/SKILL.md
+  s_5863f277e5e0bf::t_f3f44daf00405b 4,7-8,10,60
+plugins/pstack/skills/swarm/SKILL.md
+  s_5863f277e5e0bf::t_a1cf96761991d0 4,7,10,25,30,32
+plugins/pstack/skills/tdd/SKILL.md
+  s_5863f277e5e0bf::t_873878fac6fad2 4,7-9
+plugins/pstack/skills/teach/SKILL.md
+  s_5863f277e5e0bf::t_c9ee1ad5bad26d 4,7,10
+plugins/pstack/skills/technical-writing/SKILL.md
+  s_5863f277e5e0bf::t_00fa9b7017b73d 4,7-9
+plugins/pstack/skills/typescript-best-practices/SKILL.md
+  s_5863f277e5e0bf::t_ba54f042d043cc 5,8-10,18
+plugins/pstack/skills/typescript-best-practices/references/patterns.md
+  s_5863f277e5e0bf::t_fd7c5c60dea753 12-15,17-18
+plugins/pstack/skills/unslop/SKILL.md
+  s_5863f277e5e0bf::t_1b87d477e15843 4,7-9
+plugins/pstack/skills/why/SKILL.md
+  s_5863f277e5e0bf::t_1d1264121f991a 4,7,10,14,16,38,52,82
+plugins/pstack/skills/why/references/synthesizer-prompt.md
+  s_5863f277e5e0bf::t_a0922e4aace694 65
+tools/upgrade-smoke.mjs
+  s_5863f277e5e0bf::t_16b1299d687092 3,5-56
+upstream/pstack/.cursor-plugin/plugin.json
+  s_5863f277e5e0bf::t_45660ce1528128 1-31
+upstream/pstack/.gitignore
+  s_5863f277e5e0bf::t_7794041e44a60a 1-3
+upstream/pstack/LICENSE
+  s_5863f277e5e0bf::t_2b8ab9336b9eba 3
+upstream/pstack/README.md
+  s_5863f277e5e0bf::t_21a20c803d28e0 1-287
+upstream/pstack/agents/poteto-agent.md
+  s_5863f277e5e0bf::t_cd16b80eff0a6b 2-4,9
+upstream/pstack/automations/benny/FOR_AGENTS.md
+  s_5863f277e5e0bf::t_ffa178e1460e5c 1-89
+upstream/pstack/automations/benny/README.md
+  s_5863f277e5e0bf::t_c0b168f3e75ad6 1-23
+upstream/pstack/automations/benny/skills/reproduce-and-fix-issues/SKILL.md
+  s_5863f277e5e0bf::t_a62391a2bd9215 1-310
+upstream/pstack/automations/benny/skills/reproduce-and-fix-issues/references/control-adapter.md
+  s_5863f277e5e0bf::t_8f382b95b57d46 1-169
+upstream/pstack/automations/benny/skills/reproduce-and-fix-issues/references/feature-map.example.md
+  s_5863f277e5e0bf::t_c50ce3c7fbf818 1-205
+upstream/pstack/automations/benny/skills/reproduce-and-fix-issues/references/verify-existing-fix.md
+  s_5863f277e5e0bf::t_743a50373076f2 1-93
+upstream/pstack/automations/benny/skills/setup-benny/SKILL.md
+  s_5863f277e5e0bf::t_323c0cb3b91857 1-266
+upstream/pstack/automations/benny/skills/triage-issue-reports/SKILL.md
+  s_5863f277e5e0bf::t_5f6091b19a3612 1-240
+upstream/pstack/automations/benny/skills/triage-issue-reports/references/routing.example.md
+  s_5863f277e5e0bf::t_d0ba7fe39585f5 1-61
+upstream/pstack/automations/benny/templates/configuration.example.yaml
+  s_5863f277e5e0bf::t_26280f17b84c34 1,3-5,7-18,20-25,27-39,41-45,47-52,54-58,60-68,70-78,80-84
+upstream/pstack/automations/benny/templates/reproduce-automation-prompt.md
+  s_5863f277e5e0bf::t_550e22ecf820a6 1,3,5,7,9-11,13,15-19,21,23,25,27,29,31-33
+upstream/pstack/automations/benny/templates/triage-automation-prompt.md
+  s_5863f277e5e0bf::t_22b645d655bd91 1-39
+upstream/pstack/docs/guide/01-setup.md
+  s_5863f277e5e0bf::t_7e53c94e013eab 1-66
+upstream/pstack/docs/guide/02-poteto-mode.md
+  s_5863f277e5e0bf::t_c1e2ab1931be1f 1-139
+upstream/pstack/docs/guide/03-understand.md
+  s_5863f277e5e0bf::t_fe18e1370e790c 1-79
+upstream/pstack/docs/guide/04-design.md
+  s_5863f277e5e0bf::t_efd37cfbf8b498 1-133
+upstream/pstack/docs/guide/05-build-and-clean.md
+  s_5863f277e5e0bf::t_a3152fef954141 1-83
+upstream/pstack/docs/guide/06-verify-and-ship.md
+  s_5863f277e5e0bf::t_9c5e91dbeb0fa7 1-152
+upstream/pstack/docs/guide/07-overnight.md
+  s_5863f277e5e0bf::t_bf742d4f23099b 1-122
+upstream/pstack/docs/guide/08-principles.md
+  s_5863f277e5e0bf::t_3ab0c4992249e6 1-72
+upstream/pstack/docs/guide/09-make-it-yours.md
+  s_5863f277e5e0bf::t_4873596e7e0438 1-100
+upstream/pstack/docs/guide/10-recipes-and-pitfalls.md
+  s_5863f277e5e0bf::t_511ff7052d0a25 1-180
+upstream/pstack/docs/guide/README.md
+  s_5863f277e5e0bf::t_15287277691b32 1-38
+upstream/pstack/docs/harness/claude-code.md
+  s_5863f277e5e0bf::t_1f1ad0fec65c4e 1-67
+upstream/pstack/plugin.json
+  s_5863f277e5e0bf::t_f8cc793f7be6a8 2,4-5,7,9-10,16-17,19-20
+upstream/pstack/skills/architect/SKILL.md
+  s_5863f277e5e0bf::t_f56e62d267918c 1-79
+upstream/pstack/skills/architect/references/design-red-flags.md
+  s_5863f277e5e0bf::t_ac703a01514009 1-57
+upstream/pstack/skills/architect/references/rationale-template.md
+  s_5863f277e5e0bf::t_b6044087bfb256 1,3,5,7,9,11,13,15,17,19-35
+upstream/pstack/skills/architect/references/runner-prompt.md
+  s_5863f277e5e0bf::t_373178d5a11266 1-20
+upstream/pstack/skills/arena/SKILL.md
+  s_5863f277e5e0bf::t_44e98ca3b5a251 1-48
+upstream/pstack/skills/automate-me/SKILL.md
+  s_5863f277e5e0bf::t_4dbd674865d5a9 1-104
+upstream/pstack/skills/benchmark-checklist/SKILL.md
+  s_5863f277e5e0bf::t_93f5c8de572a5f 1-5,7,9,11,13,15-17,19,21-27,29,31-34,36-39
+upstream/pstack/skills/blast-radius/SKILL.md
+  s_5863f277e5e0bf::t_45c560c8c1eb76 3,7-50
+upstream/pstack/skills/bro/SKILL.md
+  s_5863f277e5e0bf::t_ff2b04214ed93d 3,7
+upstream/pstack/skills/correct/SKILL.md
+  s_5863f277e5e0bf::t_7b6bb933c78425 3,7-32
+upstream/pstack/skills/create-formal-verification-skill/SKILL.md
+  s_5863f277e5e0bf::t_b1d04dc427ea99 1-5,7,9,11,13,15,17,19,21,23-41
+upstream/pstack/skills/create-verification-skill/SKILL.md
+  s_5863f277e5e0bf::t_4780eeea5270ae 1-44
+upstream/pstack/skills/create-verification-skill/references/feature-map-example/README.md
+  s_5863f277e5e0bf::t_d9999c39d9cb6e 1-47
+upstream/pstack/skills/create-verification-skill/references/feature-map-example/create-note.md
+  s_5863f277e5e0bf::t_4cb85e006e9c19 1-39
+upstream/pstack/skills/create-verification-skill/references/feature-map-example/search.md
+  s_5863f277e5e0bf::t_74eadb16e83222 1,3,5,7-12,14,16-18,20,22,24-26,28-37,39-45
+upstream/pstack/skills/figure-it-out/SKILL.md
+  s_5863f277e5e0bf::t_93c65b6378f1e4 3,7-52
+upstream/pstack/skills/how/SKILL.md
+  s_5863f277e5e0bf::t_a53407b4ab36e6 2-3,7-36
+upstream/pstack/skills/how/references/explainer-prompt.md
+  s_5863f277e5e0bf::t_40d57123a2b7ea 1-55
+upstream/pstack/skills/how/references/explorer-prompt.md
+  s_5863f277e5e0bf::t_7b1c5be2fd468a 1,3,5,7,9,11,13,15,19-35
+upstream/pstack/skills/in-your-own-words/SKILL.md
+  s_5863f277e5e0bf::t_02081a8b5b4bbb 3,7
+upstream/pstack/skills/interrogate/SKILL.md
+  s_5863f277e5e0bf::t_3153027a26eafe 2-4,7,9,11,13,15-17,19,21-74
+upstream/pstack/skills/interrogate/references/code-quality-review.md
+  s_5863f277e5e0bf::t_7aab95e5e1eab5 1,3,5,17,19,21,23,25,27,29,31,33,35,37-39,41,43,45,47
+upstream/pstack/skills/interrogate/references/lead-judgment.md
+  s_5863f277e5e0bf::t_1fa05f42dcece1 1-39
+upstream/pstack/skills/interrogate/references/reviewer-prompt.md
+  s_5863f277e5e0bf::t_b0eaa21ef27599 1-62
+upstream/pstack/skills/interrogate/references/rubric.md
+  s_5863f277e5e0bf::t_647204eec12ff1 1-77
+upstream/pstack/skills/ketchup/SKILL.md
+  s_5863f277e5e0bf::t_981ec6181f47a8 1-43
+upstream/pstack/skills/maintain-formal-verification-skill/SKILL.md
+  s_5863f277e5e0bf::t_992a94b2cf29bb 1-58
+upstream/pstack/skills/maintain-verification-skill/SKILL.md
+  s_5863f277e5e0bf::t_c4a96cbfa6ce76 2-4,7,9,11,13,15-17,19,21,23,25,27,29,31,33,35,37,39
+upstream/pstack/skills/make-bot-ui/SKILL.md
+  s_5863f277e5e0bf::t_a414dc8b217fa2 1-115
+upstream/pstack/skills/no-comments/SKILL.md
+  s_5863f277e5e0bf::t_10e8c98c22f6d9 3,7-24
+upstream/pstack/skills/poteto-help/SKILL.md
+  s_5863f277e5e0bf::t_eb51828d655727 1-161
+upstream/pstack/skills/poteto-help/references/prompting.md
+  s_5863f277e5e0bf::t_e02c43106935a7 1-51
+upstream/pstack/skills/poteto-help/references/recipes.md
+  s_5863f277e5e0bf::t_ed364f78a6976b 1-51
+upstream/pstack/skills/poteto-mode/SKILL.md
+  s_5863f277e5e0bf::t_ca5c7428e24404 1-149
+upstream/pstack/skills/poteto-mode/playbooks/authoring-a-skill.md
+  s_5863f277e5e0bf::t_1d24169ea365a6 1-12
+upstream/pstack/skills/poteto-mode/playbooks/autonomous-run.md
+  s_5863f277e5e0bf::t_060490254f0570 1-13
+upstream/pstack/skills/poteto-mode/playbooks/autopilot-full.md
+  s_5863f277e5e0bf::t_fb4ea4e2d40fed 1-25
+upstream/pstack/skills/poteto-mode/playbooks/autopilot-stack.md
+  s_5863f277e5e0bf::t_850ea2449e0164 1-12
+upstream/pstack/skills/poteto-mode/playbooks/babysit.md
+  s_5863f277e5e0bf::t_f5cdd10071b591 1-23
+upstream/pstack/skills/poteto-mode/playbooks/bug-fix.md
+  s_5863f277e5e0bf::t_90948fed2829d9 1-15
+upstream/pstack/skills/poteto-mode/playbooks/eval.md
+  s_5863f277e5e0bf::t_451abd3f175792 1-25
+upstream/pstack/skills/poteto-mode/playbooks/feature.md
+  s_5863f277e5e0bf::t_f1077f9c661726 1-21
+upstream/pstack/skills/poteto-mode/playbooks/hillclimb.md
+  s_5863f277e5e0bf::t_2e0aa42dd75036 1,3,5,7-19,21
+upstream/pstack/skills/poteto-mode/playbooks/investigation.md
+  s_5863f277e5e0bf::t_720ae2fa07e4d1 1-14
+upstream/pstack/skills/poteto-mode/playbooks/multi-phase-plan.md
+  s_5863f277e5e0bf::t_86c8da73008b2f 1-155
+upstream/pstack/skills/poteto-mode/playbooks/opening-a-pr.md
+  s_5863f277e5e0bf::t_1081e49e264f58 1,3-34
+upstream/pstack/skills/poteto-mode/playbooks/orchestrate.md
+  s_5863f277e5e0bf::t_5527d531e11bfe 1,3,5,7,9-11,13,15-17,19,21,23,25-32,34,36,38-50,53,55,57,59,61-67,69,71-76,78,80-84,86,88,90,92,94,96-102,104,106,108,110,112
+upstream/pstack/skills/poteto-mode/playbooks/pause-safely.md
+  s_5863f277e5e0bf::t_02409fc76c297a 1-10
+upstream/pstack/skills/poteto-mode/playbooks/perf-issue.md
+  s_5863f277e5e0bf::t_5729b9ee9f58e2 1-25
+upstream/pstack/skills/poteto-mode/playbooks/prototype.md
+  s_5863f277e5e0bf::t_b357c0303f47ea 1,3,5,7-14
+upstream/pstack/skills/poteto-mode/playbooks/refactoring.md
+  s_5863f277e5e0bf::t_1e781655bab14f 1-16
+upstream/pstack/skills/poteto-mode/playbooks/runtime-forensics.md
+  s_5863f277e5e0bf::t_794f590cb55325 1,3,5-9,11
+upstream/pstack/skills/poteto-mode/playbooks/session-pickup.md
+  s_5863f277e5e0bf::t_b2d00691620288 1,3,5-9,11
+upstream/pstack/skills/poteto-mode/playbooks/shipping.md
+  s_5863f277e5e0bf::t_5eb5df61df12ae 1,3,5-12
+upstream/pstack/skills/poteto-mode/playbooks/trace-forensics.md
+  s_5863f277e5e0bf::t_d8212357ef0efa 1-14
+upstream/pstack/skills/poteto-mode/playbooks/visual-parity.md
+  s_5863f277e5e0bf::t_455ec17642d676 1-11
+upstream/pstack/skills/poteto-mode/playbooks/worktree-cleanup.md
+  s_5863f277e5e0bf::t_933920194b77b6 1,3-8,10-12
+upstream/pstack/skills/poteto-mode/references/bugbot-triage.md
+  s_5863f277e5e0bf::t_e11bb4d395036f 1-142
+upstream/pstack/skills/poteto-mode/scripts/bootstrap.ts
+  s_5863f277e5e0bf::t_7954cbef84bd95 1-2,5-15,17-22,25-32,35-48,50-59,61-62
+upstream/pstack/skills/poteto-mode/scripts/bun.lock
+  s_5863f277e5e0bf::t_5b57ab42faf3b2 1-65,67
+upstream/pstack/skills/poteto-mode/scripts/check-plan.mjs
+  s_5863f277e5e0bf::t_c313ade5afb6e1 2,5-29,31-34,37-39,41-43,46-80,83-88,90-103,106-118,121-191,194-199,202-205
+upstream/pstack/skills/poteto-mode/scripts/check-plan.test.ts
+  s_5863f277e5e0bf::t_60cba51ddbd669 1,3-11,13-15,17-23,25-44,46-47,49-69,72-81,83-87,89-90,93-95
+upstream/pstack/skills/poteto-mode/scripts/orch/orch.test.ts
+  s_5863f277e5e0bf::t_764aa1bca94aef 1-32,34-38,40-46,49-56,59-72,75-111,114-136,138-159,162-188,190-233,235-245,248-256,258,260-267,269-296,298-299,302-342,345-371,373-377,380-384,386-387,389,391-392,394-398,400-405,408-418,421-425,427-436,439-442,444-447,449-459,462-492,495-574,576-593,595-608,611-643,645-651,653-683,686-704,707-709,711-760
+upstream/pstack/skills/poteto-mode/scripts/orch/orch.ts
+  s_5863f277e5e0bf::t_67902b1c8d0da1 1-34,37-40,43-46,48-52,55-57,60-62,65-96,98,101-104,106,109-113,116-125,128-135,138-159,161,164-174,177-189,192-202,205-208,210,213-218,221-241,244-248,251-278,280-322,324-382,384-548,551-567,569,572-579,581-584,588-589
+upstream/pstack/skills/poteto-mode/scripts/orch/store.ts
+  s_5863f277e5e0bf::t_7ee6af9228d4ba 1-325,327-344,346-525,527-609,611-612,614-658,660-736,738-751,753-763,765-821,823-836,838-851,853-1140,1142,1144-1152,1154-1291,1293-1310,1312-1370,1372-1398,1400-1417,1419-1432,1434-1447,1449-1480,1482-1527,1529-1550,1552-1579,1581-1586,1588-1606,1608-1644,1646-1656,1658-1677
+upstream/pstack/skills/poteto-mode/scripts/package.json
+  s_5863f277e5e0bf::t_070eb5f80e08f9 2-7,9-14
+upstream/pstack/skills/poteto-mode/scripts/watch-pr/cli.test.ts
+  s_5863f277e5e0bf::t_7067548b393ba6 1-6,8,10-32,35-52,55-83,86-102,104-139,141-144,147-152,154,156-162,166-189,191,194-198,200-203,205-214,217-222
+upstream/pstack/skills/poteto-mode/scripts/watch-pr/cli.ts
+  s_5863f277e5e0bf::t_e0e6749607538f 1-32,34-38,40-44,46-50,52,54,56,59-65,67-80,82-151,153-157,159-171,173-208,210-222
+upstream/pstack/skills/poteto-mode/scripts/watch-pr/fakes.test-helper.ts
+  s_5863f277e5e0bf::t_f6ea45d3ecfe0b 1-95,97-99,101-103,105-107,109-111,113-115,117-122,124-126,128
+upstream/pstack/skills/poteto-mode/scripts/watch-pr/github.test.ts
+  s_5863f277e5e0bf::t_2ee9b7fa7c14f0 1-37,40-64,66,69-80,84-105,107-122,125-137,140-153,156-171,175-186,188-194,197-201,204-207,210-225,227,229-292,294-304,307-321,324-332,335-340,343-362,365-374,377-385,389-436
+upstream/pstack/skills/poteto-mode/scripts/watch-pr/github.ts
+  s_5863f277e5e0bf::t_c4686e6b03feb8 1-9,11-14,16-22,24-35,37-42,44-58,61-78,80-108,110-189,191-219,221-297,299-352,354-375,377-395,397-456,458-461,463-538,540-606,610-662,664-666,669-688,690-711,713-717
+upstream/pstack/skills/poteto-mode/scripts/watch-pr/policy.test.ts
+  s_5863f277e5e0bf::t_4cc3fce0ce3dcd 1-35,37-67,69,71-90,93-111,114-133,136-150,152,154-173,175,177-196,198,200-208,210,212-220,224-232,234-252,255-311,314-335,337-392,395-412,415-420
+upstream/pstack/skills/poteto-mode/scripts/watch-pr/policy.ts
+  s_5863f277e5e0bf::t_05fef012af4f9d 2-244,246-326,328-339,341-362,364-374,376-404,406-413,415-434,436-456,458-517,519-523,525-550,552-612,614-617,619-624,626-665,667-752,754-768,770-827,829-834,836
+upstream/pstack/skills/poteto-mode/scripts/watch-pr/render.ts
+  s_5863f277e5e0bf::t_799ad15978d122 1-19,21-51,53,55-129,131-169
+upstream/pstack/skills/poteto-mode/scripts/watch-pr/tsconfig.json
+  s_5863f277e5e0bf::t_27a559f2929049 12
+upstream/pstack/skills/poteto-mode/scripts/watch-pr/types.compile.ts
+  s_5863f277e5e0bf::t_d14c1362e4e8ba 1-93
+upstream/pstack/skills/poteto-mode/scripts/watch-pr/types.ts
+  s_5863f277e5e0bf::t_fdffcdd6bbc4d8 1-85,87-196,198-207,209-213,215-302,304-380,382-412
+upstream/pstack/skills/poteto-mode/scripts/watch-pr/watch-pr
+  s_5863f277e5e0bf::t_47cc4f09147ad1 1-6
+upstream/pstack/skills/poteto-mode/scripts/worktree-audit.sh
+  s_5863f277e5e0bf::t_0ca3448d231a0e 1-126
+upstream/pstack/skills/principle-attack-the-premise/SKILL.md
+  s_5863f277e5e0bf::t_0076325a626c4e 1-21
+upstream/pstack/skills/principle-boundary-discipline/SKILL.md
+  s_5863f277e5e0bf::t_e36a1e55cc038c 1-34
+upstream/pstack/skills/principle-build-the-lever/SKILL.md
+  s_5863f277e5e0bf::t_f18bb1ae4b81a7 1-23
+upstream/pstack/skills/principle-encode-lessons-in-structure/SKILL.md
+  s_5863f277e5e0bf::t_30a7e4d1319d7f 2-3,7-11
+upstream/pstack/skills/principle-exhaust-the-design-space/SKILL.md
+  s_5863f277e5e0bf::t_f0181a3babce06 2-3,7-9
+upstream/pstack/skills/principle-experience-first/SKILL.md
+  s_5863f277e5e0bf::t_59c3b120383beb 1-19
+upstream/pstack/skills/principle-explain-the-number/SKILL.md
+  s_5863f277e5e0bf::t_3376945ff7acb5 1-17
+upstream/pstack/skills/principle-fix-root-causes/SKILL.md
+  s_5863f277e5e0bf::t_80dcb1e62f1574 1-21
+upstream/pstack/skills/principle-foundational-thinking/SKILL.md
+  s_5863f277e5e0bf::t_9586c2fe9f0789 1-21
+upstream/pstack/skills/principle-guard-the-context-window/SKILL.md
+  s_5863f277e5e0bf::t_9657135abf2269 2-3,7-12
+upstream/pstack/skills/principle-laziness-protocol/SKILL.md
+  s_5863f277e5e0bf::t_ba1b327ea8e59e 2-3,7-10
+upstream/pstack/skills/principle-make-operations-idempotent/SKILL.md
+  s_5863f277e5e0bf::t_1b96225c9b5cf3 1-22
+upstream/pstack/skills/principle-migrate-callers-then-delete-legacy-apis/SKILL.md
+  s_5863f277e5e0bf::t_05c8c1c6ead8b0 1-14
+upstream/pstack/skills/principle-minimize-reader-load/SKILL.md
+  s_5863f277e5e0bf::t_544b5eee05a6bc 1-18
+upstream/pstack/skills/principle-model-the-domain/SKILL.md
+  s_5863f277e5e0bf::t_04eed8e3e4ebce 1-5,7,9,11,13-24
+upstream/pstack/skills/principle-never-block-on-the-human/SKILL.md
+  s_5863f277e5e0bf::t_d3beb6ae04a744 1-15
+upstream/pstack/skills/principle-outcome-oriented-execution/SKILL.md
+  s_5863f277e5e0bf::t_dd334c4b046ccc 1-21
+upstream/pstack/skills/principle-prove-it-works/SKILL.md
+  s_5863f277e5e0bf::t_c5bd0388cd5431 1-22
+upstream/pstack/skills/principle-redesign-from-first-principles/SKILL.md
+  s_5863f277e5e0bf::t_2cf21cf51d5783 1-16
+upstream/pstack/skills/principle-separate-before-serializing-shared-state/SKILL.md
+  s_5863f277e5e0bf::t_9de0592c1ba48c 1-5,7-16
+upstream/pstack/skills/principle-sequence-verifiable-units/SKILL.md
+  s_5863f277e5e0bf::t_ccd640ce3f67cd 1-17
+upstream/pstack/skills/principle-subtract-before-you-add/SKILL.md
+  s_5863f277e5e0bf::t_a7876ec7a722a2 2-4,7,9-18
+upstream/pstack/skills/principle-test-behavior-not-implementation/SKILL.md
+  s_5863f277e5e0bf::t_6d65780913e5c2 2-3,7-20
+upstream/pstack/skills/principle-type-system-discipline/SKILL.md
+  s_5863f277e5e0bf::t_31b822888f8c38 1-13
+upstream/pstack/skills/recall/SKILL.md
+  s_5863f277e5e0bf::t_c772c8831e6ea1 1-35
+upstream/pstack/skills/reflect/SKILL.md
+  s_5863f277e5e0bf::t_17f74e06e43111 3,7-67
+upstream/pstack/skills/reflect/references/divergent-reviewer.md
+  s_5863f277e5e0bf::t_77144821394578 1,3,5,7,9,11-17,19,21,23-25,27,29-32,34,36-38
+upstream/pstack/skills/reflect/references/judgment-reviewer.md
+  s_5863f277e5e0bf::t_0d7eeb65fa3e9a 1-37
+upstream/pstack/skills/reflect/references/synthesizer.md
+  s_5863f277e5e0bf::t_5f45afc422b765 1-56
+upstream/pstack/skills/reflect/references/tooling-reviewer.md
+  s_5863f277e5e0bf::t_073fb41cef20a4 1,3,5,7,9-48
+upstream/pstack/skills/setup-pstack/SKILL.md
+  s_5863f277e5e0bf::t_0eef4b216a2ba5 1-4,6,8,10,12,14,16,18,20-78
+upstream/pstack/skills/sharpen/SKILL.md
+  s_5863f277e5e0bf::t_bd21e387d6f997 3,7
+upstream/pstack/skills/show-me-your-work/SKILL.md
+  s_5863f277e5e0bf::t_130ee0c5d1e50f 1-82
+upstream/pstack/skills/show-me-your-work/references/decision-log-template.tsv
+  s_5863f277e5e0bf::t_ab2a0ac3baa81b 1
+upstream/pstack/skills/show-me-your-work/scripts/log.sh
+  s_5863f277e5e0bf::t_04625b1a25e940 1-42
+upstream/pstack/skills/swarm/SKILL.md
+  s_5863f277e5e0bf::t_9f62c064442147 3,7-41
+upstream/pstack/skills/tdd/SKILL.md
+  s_5863f277e5e0bf::t_00fec8b6dd5529 3,7-42
+upstream/pstack/skills/teach/SKILL.md
+  s_5863f277e5e0bf::t_716be90be4dedf 1-21
+upstream/pstack/skills/technical-writing/SKILL.md
+  s_5863f277e5e0bf::t_b56b5507df838a 3,7-106
+upstream/pstack/skills/typescript-best-practices/SKILL.md
+  s_5863f277e5e0bf::t_0ae8c36b10bfa6 3-4,8-31
+upstream/pstack/skills/typescript-best-practices/references/patterns.md
+  s_5863f277e5e0bf::t_81f039e07a844d 1,3-13,16-82,84-127,129-143,146-167,170-172,174-175,177-192,194-237,239-253,255-324,326-328
+upstream/pstack/skills/unslop/SKILL.md
+  s_5863f277e5e0bf::t_2c6606356dccc0 1-62
+upstream/pstack/skills/why/SKILL.md
+  s_5863f277e5e0bf::t_923d7e52b65e4c 1-98
+upstream/pstack/skills/why/references/epistemics.md
+  s_5863f277e5e0bf::t_76df4077cec090 1-71
+upstream/pstack/skills/why/references/investigator-prompt.md
+  s_5863f277e5e0bf::t_c72e54eac0a20e 1,3,5,7,9,11,13,15,17,19,21-22,24,26,28,30,32,34,36-41,43,45,47-51,53,55,57-58,60-61,63-68,70-75,77-84
+upstream/pstack/skills/why/references/source-playbook.md
+  s_5863f277e5e0bf::t_38e96d5f8da911 1-17
+upstream/pstack/skills/why/references/sources/code-archaeology.md
+  s_5863f277e5e0bf::t_12276f487cf75e 1-51
+upstream/pstack/skills/why/references/sources/databricks.md
+  s_5863f277e5e0bf::t_104d7794b153d2 1-70
+upstream/pstack/skills/why/references/sources/datadog.md
+  s_5863f277e5e0bf::t_a0023ee3716650 1,3,5,7-13,15,17,19,21-24,26,28-97
+upstream/pstack/skills/why/references/sources/incident-postmortem.md
+  s_5863f277e5e0bf::t_01cca4ab5b5091 1-5
+upstream/pstack/skills/why/references/sources/linear.md
+  s_5863f277e5e0bf::t_bbed16fc56f6f4 1-48
+upstream/pstack/skills/why/references/sources/notion.md
+  s_5863f277e5e0bf::t_32c41a32034211 1-55
+upstream/pstack/skills/why/references/sources/sentry.md
+  s_5863f277e5e0bf::t_1cd0f2fd391011 1-66
+upstream/pstack/skills/why/references/sources/slack.md
+  s_5863f277e5e0bf::t_b730645e7c0e50 1-17
+upstream/pstack/skills/why/references/synthesizer-prompt.md
+  s_5863f277e5e0bf::t_a159a8456bbb63 1-129
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.7.5",
+  "base_commit_sha": "375db1951f77691cdd08e35a57debd9be6e30fe2",
+  "prompts": {},
+  "sessions": {
+    "s_5863f277e5e0bf": {
+      "agent_id": {
+        "tool": "codex",
+        "id": "01a154db-b774-7f02-9b66-5d53edfa16a1",
+        "model": "gpt-6.1-sol"
+      },
+      "human_author": "pattara <pattaraprach@gmail.com>"
+    }
+  }
+}
