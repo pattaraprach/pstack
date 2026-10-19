@@ -1,0 +1,25 @@
+tools/codex-smoke.mjs
+  s_5863f277e5e0bf::t_b57987967466af 9,25,28,32
+tools/upgrade-smoke.mjs
+  s_5863f277e5e0bf::t_b57987967466af 8
+docs/track-original-decisions.tsv
+  s_5863f277e5e0bf::t_f27d4101a97645 19-21
+docs/verification.md
+  s_5863f277e5e0bf::t_4beead2b3d90fe 27
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.7.5",
+  "base_commit_sha": "b1321dc9977834ffd9f23315782184e68324bdec",
+  "prompts": {},
+  "sessions": {
+    "s_5863f277e5e0bf": {
+      "agent_id": {
+        "tool": "codex",
+        "id": "01a154db-b774-7f02-9b66-5d53edfa16a1",
+        "model": "gpt-6.1-sol"
+      },
+      "human_author": "pattara <pattaraprach@gmail.com>"
+    }
+  }
+}
