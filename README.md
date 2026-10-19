@@ -46,7 +46,7 @@ To fetch the latest original before rebuilding, run `node tools/sync.mjs`. That 
 
 ## Preserve the owner's fork changes
 
-Commit `f044c64` restored official workflow policy while preserving runtime compatibility. This build preserves that policy by copying current original files without rewriting their workflows, model defaults, or shipping rules. Codex packaging, hooks, model storage, and tool mapping live separately. The former Bun/macOS automount workaround applied to the port's `worktree-audit.mjs`. The current original ships `worktree-audit.sh`, so that workaround no longer applies. Claude, Pi, and Copilot packaging is retired because this fork now serves Codex only.
+Commit `f044c64` restored official workflow policy while preserving runtime compatibility. This build preserves that policy by copying current original files without rewriting their workflows, model defaults, or shipping rules. Codex packaging, hooks, model storage, and tool mapping live separately. The owner's Serena project configuration is retained for repository navigation. The former Bun/macOS automount workaround applied to the port's `worktree-audit.mjs`. The current original ships `worktree-audit.sh`, so that workaround no longer applies. Claude, Pi, and Copilot packaging is retired because this fork now serves Codex only.
 
 Commit `33b7c8b` kept generated code-index exclusions out of the shared ignore file. This remains true. No index is built or required.
 
