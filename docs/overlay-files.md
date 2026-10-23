@@ -59,6 +59,7 @@ Regenerate with `npm run build`. All original files are copied unchanged except 
 - `skills/setup-pstack/SKILL.md`. Adds only the Codex adapter preamble and explicitly delegates setup overrides to it.
 - `skills/sharpen/SKILL.md`. Adds only the Codex adapter preamble.
 - `skills/show-me-your-work/SKILL.md`. Adds only the Codex adapter preamble.
+- `skills/statechart/SKILL.md`. Adds only the Codex adapter preamble.
 - `skills/swarm/SKILL.md`. Adds only the Codex adapter preamble.
 - `skills/tdd/SKILL.md`. Adds only the Codex adapter preamble.
 - `skills/teach/SKILL.md`. Adds only the Codex adapter preamble.

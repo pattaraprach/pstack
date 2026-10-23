@@ -1,6 +1,6 @@
 {
   "name": "pstack",
-  "version": "0.15.29+codex.1.88d47514b82e",
+  "version": "0.15.30+codex.1.8b3326d99fd4",
   "description": "Current original pstack by Lauren Tan, with a thin Codex compatibility overlay.",
   "author": {
     "name": "Lauren Tan; Codex overlay by Pattaraprach"
