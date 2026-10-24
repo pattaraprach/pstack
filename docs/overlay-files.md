@@ -24,6 +24,7 @@ Regenerate with `npm run build`. All original files are copied unchanged except 
 - `skills/in-your-own-words/SKILL.md`. Adds only the Codex adapter preamble.
 - `skills/interrogate/SKILL.md`. Adds only the Codex adapter preamble.
 - `skills/ketchup/SKILL.md`. Adds only the Codex adapter preamble.
+- `skills/ketchup-video/SKILL.md`. Adds only the Codex adapter preamble.
 - `skills/maintain-formal-verification-skill/SKILL.md`. Adds only the Codex adapter preamble.
 - `skills/maintain-verification-skill/SKILL.md`. Adds only the Codex adapter preamble.
 - `skills/make-bot-ui/SKILL.md`. Adds only the Codex adapter preamble.
