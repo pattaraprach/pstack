@@ -1,7 +1,7 @@
 {
   "name": "pstack-faithful",
   "private": true,
-  "version": "0.15.43+codex.1.3fa33bb0f927",
+  "version": "0.15.46+codex.1.fbb86c09bbb4",
   "type": "module",
   "scripts": {
     "build": "node tools/generate.mjs",
